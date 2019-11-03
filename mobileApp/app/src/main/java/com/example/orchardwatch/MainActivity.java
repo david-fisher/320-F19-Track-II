@@ -1,6 +1,9 @@
 package com.example.orchardwatch;
 
 import android.os.Bundle;
+import android.webkit.WebSettings;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -11,6 +14,8 @@ import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 public class MainActivity extends AppCompatActivity {
+
+    private WebView my_webview;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +30,26 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(navView, navController);
+
+        my_webview = (WebView)findViewById(R.id.webView);
+
+        WebSettings web_settings = my_webview.getSettings();
+        web_settings.setJavaScriptEnabled(true);
+
+        my_webview.loadUrl("https://www.umass.edu/");
+        my_webview.setWebViewClient(new WebViewClient());   //prevent opening in another browser instead of the app
+
     }
 
+    /*
+    When back button is clicked, it goes back to the previous page
+     */
+    @Override
+    public void onBackPressed() {
+        if(my_webview.canGoBack()){
+            my_webview.goBack();
+        } else {
+            super.onBackPressed();
+        }
+    }
 }
