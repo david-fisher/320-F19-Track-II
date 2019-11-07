@@ -1,0 +1,19 @@
+{
+  "name": "320-f19-track-ii",
+  "version": "1.0.0",
+  "description": "Track II's repo",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Swiggle45/320-F19-Track-II.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Swiggle45/320-F19-Track-II/issues"
+  },
+  "homepage": "https://github.com/Swiggle45/320-F19-Track-II#readme"
+}
