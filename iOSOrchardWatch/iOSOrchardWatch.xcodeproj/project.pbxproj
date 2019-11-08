@@ -13,6 +13,7 @@
 		4F82D0D62374A0D80066F447 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F82D0D52374A0D80066F447 /* Assets.xcassets */; };
 		4F82D0D92374A0D80066F447 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F82D0D72374A0D80066F447 /* LaunchScreen.storyboard */; };
 		4F82D0E42374A0D80066F447 /* iOSOrchardWatchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F82D0E32374A0D80066F447 /* iOSOrchardWatchTests.swift */; };
+		4F8F457E2375EB53006AD429 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F8F457D2375EB53006AD429 /* DetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +37,7 @@
 		4F82D0DF2374A0D80066F447 /* iOSOrchardWatchTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iOSOrchardWatchTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F82D0E32374A0D80066F447 /* iOSOrchardWatchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSOrchardWatchTests.swift; sourceTree = "<group>"; };
 		4F82D0E52374A0D80066F447 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4F8F457D2375EB53006AD429 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +81,7 @@
 			children = (
 				4F82D0CE2374A0D70066F447 /* AppDelegate.swift */,
 				4F82D0D02374A0D70066F447 /* ViewController.swift */,
+				4F8F457D2375EB53006AD429 /* DetailViewController.swift */,
 				4F82D0D22374A0D70066F447 /* Main.storyboard */,
 				4F82D0D52374A0D80066F447 /* Assets.xcassets */,
 				4F82D0D72374A0D80066F447 /* LaunchScreen.storyboard */,
@@ -197,6 +200,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4F8F457E2375EB53006AD429 /* DetailViewController.swift in Sources */,
 				4F82D0D12374A0D70066F447 /* ViewController.swift in Sources */,
 				4F82D0CF2374A0D70066F447 /* AppDelegate.swift in Sources */,
 			);
