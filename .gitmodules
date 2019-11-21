@@ -1,0 +1,3 @@
+[submodule "OrchardWatch-mobileapp"]
+	path = OrchardWatch-mobileapp
+	url = https://github.com/TEAM-B3ANS/OrchardWatch-mobileapp.git
