@@ -2,15 +2,6 @@ import React, { useState } from "react";
 import { Button, FormGroup, FormControl, FormLabel } from "react-bootstrap";
 import "./Login.css";
 import Cookies from "universal-cookie";
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link,
-  Redirect,
-  useHistory,
-  useLocation
-} from "react-router-dom";
 
 export default function Login() {
   const [email, setEmail] = useState("");
@@ -26,7 +17,7 @@ export default function Login() {
       const cookies = new Cookies();
       cookies.set("name", "David", { path: "/" });
       cookies.set("token", "test_token_value", { path: "/" });
-      alert('Logged in');
+      alert("Logged in");
       window.location.reload();
     } else {
       alert("Invalid credentials");
@@ -60,4 +51,3 @@ export default function Login() {
     </div>
   );
 }
-
