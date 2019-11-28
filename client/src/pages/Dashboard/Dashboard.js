@@ -27,7 +27,7 @@ export default function Dashboard() {
             <Card>
               <Card.Img variant="top" src="holder.js/100px180" />
               <Card.Body>
-                <Card.Title>Announcemenets</Card.Title>
+                <Card.Title>Announcements</Card.Title>
                 <Card.Text>
                   View past announcements or make a new one.
                 </Card.Text>
