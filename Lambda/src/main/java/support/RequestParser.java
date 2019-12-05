@@ -1,5 +1,6 @@
 package support;
 
+import exceptions.IllegalContentsException;
 import exceptions.IllegalRequestException;
 import requests.RequestInterface;
 
@@ -23,11 +24,13 @@ public final class RequestParser
      * @param input        the parsed HashMap from json
      * @param requestClass the Request class
      * @return Constructed Instance of Desired Request Class.
-     * @throws IllegalRequestException if input HashMap does not contains all the filed in desired Request Class.
-     * @throws NullPointerException    if any of arguments are null
-     * @throws IllegalStateException   if there is anything wrong during reflection.
+     * @throws IllegalRequestException  if input HashMap does not contains all the filed in desired Request Class.
+     * @throws IllegalContentsException if fields in request contains illegal contents.
+     * @throws NullPointerException     if any of arguments are null
+     * @throws IllegalStateException    if there is anything wrong during reflection.
      */
-    public static <R extends RequestInterface> R parse(HashMap<String, String> input, Class requestClass) throws IllegalRequestException
+    public static <R extends RequestInterface> R parse(HashMap<String, String> input, Class requestClass)
+            throws IllegalRequestException, IllegalContentsException
     {
         if (input == null || requestClass == null)
         {
@@ -37,7 +40,8 @@ public final class RequestParser
         R request = null;
         try
         {
-            Constructor<R> constructor = requestClass.getConstructor(null);
+
+            Constructor<R> constructor = requestClass.getConstructor();
             if (constructor.getParameterCount() != 0)
             {
                 throw new NoSuchMethodException(); //Jump
@@ -69,6 +73,11 @@ public final class RequestParser
             {
                 throw new IllegalRequestException(String.format("Requests does not contain necessary field:'%s'", field.getName()));
             }
+        }
+
+        if (!request.isValid())
+        {
+            throw new IllegalContentsException("Requests contains field(s) that has illegal contents.");
         }
 
         return request;
