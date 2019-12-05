@@ -1,7 +1,7 @@
 {
   "Email": "test@test.com",
-  "Role": "Researcher",
-  "FirstName": "David",
-  "LastName": "Fisher",
+  "Role": "PUBLIC",
+  "FirstName": "TestF",
+  "LastName": "TestL",
   "Password": "password"
 }

@@ -10,18 +10,18 @@ import java.util.Map;
 public class GatewayResponse
 {
 
-    private final String body;
+    private final Map<String, String> body;
     private final Map<String, String> headers;
     private final int statusCode;
 
-    public GatewayResponse(final String body, final Map<String, String> headers, final int statusCode)
+    public GatewayResponse(final Map<String, String> body, final Map<String, String> headers, final int statusCode)
     {
         this.statusCode = statusCode;
         this.body = body;
         this.headers = Collections.unmodifiableMap(new HashMap<>(headers));
     }
 
-    public String getBody()
+    public Map<String, String> getBody()
     {
         return body;
     }

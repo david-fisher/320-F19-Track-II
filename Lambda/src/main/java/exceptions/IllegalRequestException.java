@@ -1,5 +1,11 @@
 package exceptions;
 
+/**
+ * @author CSR
+ * @version 2019-12-05
+ *
+ * Trivial re-pack of Exception for exception when the request body does not contains necessary fields.
+ */
 public class IllegalRequestException extends Exception
 {
     public IllegalRequestException()

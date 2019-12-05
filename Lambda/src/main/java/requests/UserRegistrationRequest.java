@@ -1,5 +1,8 @@
 package requests;
 
+import support.RegularExpressionInputValidator;
+import support.UserRole;
+
 public class UserRegistrationRequest implements RequestInterface
 {
 
@@ -66,4 +69,13 @@ public class UserRegistrationRequest implements RequestInterface
         return password;
     }
 
+    @Override
+    public boolean isValid()
+    {
+        return RegularExpressionInputValidator.isValidEmail(email) &&
+                UserRole.validRole(role) &&
+                firstName != null && !firstName.equals("") &&
+                lastName != null && !lastName.equals("") &&
+                password != null && !password.equals("");
+    }
 }
