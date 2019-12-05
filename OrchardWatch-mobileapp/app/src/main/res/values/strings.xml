@@ -1,0 +1,26 @@
+<resources>
+    <string name="app_name">OrchardWatch for Growers</string>
+    <string name="submit">Submit</string>
+    <string name="authentication_key">Authentication Key</string>
+    <string name="orchardwatch_logo">OrchardWatch Logo</string>
+    <string name="welcome_string">Welcome to the OrchardWatch mobile app! Enter your designated authentication key below to get started.</string>
+    <string name="home_page">Home Page</string>
+    <string name="home">Home</string>
+    <string name="photo_upload">Photo Upload</string>
+    <string name="settings">Settings</string>
+    <string name="photo_upload_page">PHOTO UPLOAD PAGE</string>
+    <string name="settings_page">SETTINGS PAGE</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="signoutButton">Sign out</string>
+    <string name="todo2">TODO</string>
+    <string name="choose_from_gallery">Choose from Gallery</string>
+    <string name="take_photo">Take New Photo</string>
+    <string name="placeholder_image">placeholder image</string>
+    <string name="authentication_key_label">Authentication Key:</string>
+    <string name="sign_out_message">Only sign out if you want to enter a new authentication key. Otherwise, simply exit the app and you will be automatically signed in upon opening it in the future!</string>
+    <string name="AllowCameraAccess">Allow app to access camera</string>
+    <string name="authKey">Text</string>
+    <string name="AllowGalleryAccess">Allow app to access gallery</string>
+</resources>
