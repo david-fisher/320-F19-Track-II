@@ -9,7 +9,7 @@ CS 320 2019 Fall
 
 This is the Mobile App of the OrchardWatch software solution.
 
-## Members
+### Members
 
 * Sayed Shah (Team Leader)
 * Joshua Read (Secretory)
