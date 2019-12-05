@@ -3,7 +3,9 @@ name: Android CI
 on:
   push:
     branches: 
-      - B3ANS-Mobile
+      - 'B3ANS-Mobile'
+    tags:
+      - mobile
 
 jobs:
   build:
