@@ -19,4 +19,5 @@ jobs:
       with:
         java-version: 1.8
     - name: Build with Gradle
-      run: ./OrchardWatch-mobileapp/gradlew build
+      working-directory: ./OrchardWatch-mobileapp/
+      run: ./gradlew build
