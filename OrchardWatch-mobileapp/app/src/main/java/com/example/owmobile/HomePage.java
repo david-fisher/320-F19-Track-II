@@ -7,13 +7,10 @@ import androidx.fragment.app.Fragment;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.webkit.WebView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class HomePage extends AppCompatActivity {
-    //Testing
-    private WebView webView;
     BottomNavigationView bottomNav;
     String authenticationKey;
     SharedPreferences sp;
@@ -23,9 +20,8 @@ public class HomePage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_page);
 
-        sp = getSharedPreferences("MyData",MODE_PRIVATE);
+        sp = getSharedPreferences("MyData", MODE_PRIVATE);
         authenticationKey = sp.getString("AuthKey", "EMPTY");
-        //Toast.makeText(HomePage.this, authenticationKey, Toast.LENGTH_LONG).show();
 
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                 new HomeFragment()).commit();
@@ -37,7 +33,7 @@ public class HomePage extends AppCompatActivity {
             new BottomNavigationView.OnNavigationItemSelectedListener() {
                 @Override
                 public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-                    Fragment selectedFragment  = new HomeFragment();
+                    Fragment selectedFragment = new HomeFragment();
 
                     switch (menuItem.getItemId()) {
                         case R.id.nav_home:

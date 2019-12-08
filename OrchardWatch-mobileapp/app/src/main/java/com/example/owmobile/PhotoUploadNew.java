@@ -7,27 +7,22 @@ import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-
-import androidx.fragment.app.Fragment;
-
+import android.net.Uri;
 import android.provider.MediaStore;
 import android.os.Build;
-
-import androidx.core.content.FileProvider;
-
+import android.os.Environment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 
-import java.io.InputStream;
-import android.net.Uri;
-import android.os.Environment;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.core.content.FileProvider;
 
+import java.io.InputStream;
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
@@ -65,6 +60,7 @@ public class PhotoUploadNew extends Fragment {
         takePhoto = this.getView().findViewById(R.id.takePhotoButton);
         takeGallery = this.getView().findViewById(R.id.takeGalleryButton);
         photo = this.getView().findViewById(R.id.photoImage);
+        upload = this.getView().findViewById(R.id.uploadButton);
 
         //Check for permissions for Camera and Gallery Use
         if (Build.VERSION.SDK_INT >= 23) {
@@ -88,7 +84,7 @@ public class PhotoUploadNew extends Fragment {
         });
 
         //Upload image for processing.
-        photo.setOnClickListener(new View.OnClickListener() {
+        upload.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 uploadImage();
@@ -136,28 +132,6 @@ public class PhotoUploadNew extends Fragment {
         }
     }
 
-    @Override
-    public void onRequestPermissionsResult(int requestCode,
-                                           String[] permissions, int[] grantResults) {
-        switch (requestCode) {
-            case REQUEST_READ_EXTERNAL_STORAGE: {
-                // If request is cancelled, the result arrays are empty.
-                if (grantResults.length > 0
-                        && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    // permission was granted, yay! Do the
-                    // contacts-related task you need to do.
-                } else {
-                    // permission denied, boo! Disable the
-                    // functionality that depends on this permission.
-                }
-                return;
-            }
-
-            // other 'case' lines to check for other
-            // permissions this app might request.
-        }
-    }
-
     private void dispatchTakePicture() {
         Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         // Ensure that there's a camera activity to handle the intent
@@ -195,5 +169,27 @@ public class PhotoUploadNew extends Fragment {
         // Save a file: path for use with ACTION_VIEW intents
         filePath = image.getAbsolutePath();
         return image;
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode,
+                                           String[] permissions, int[] grantResults) {
+        switch (requestCode) {
+            case REQUEST_READ_EXTERNAL_STORAGE: {
+                // If request is cancelled, the result arrays are empty.
+                if (grantResults.length > 0
+                        && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    // permission was granted, yay! Do the
+                    // contacts-related task you need to do.
+                } else {
+                    // permission denied, boo! Disable the
+                    // functionality that depends on this permission.
+                }
+                return;
+            }
+
+            // other 'case' lines to check for other
+            // permissions this app might request.
+        }
     }
 }

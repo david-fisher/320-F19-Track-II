@@ -31,8 +31,8 @@ public class SettingsFragment extends Fragment {
         sp = this.getContext().getSharedPreferences("MyData", this.getContext().MODE_PRIVATE);
         editor = sp.edit();
 
-        signoutButton = (Button) this.getView().findViewById(R.id.signoutButton);
-        authenticationKey = (TextView) this.getView().findViewById(R.id.authKey);
+        signoutButton = this.getView().findViewById(R.id.signoutButton);
+        authenticationKey = this.getView().findViewById(R.id.authKey);
 
         authenticationKey.setText("Authentication Key: " + (sp.getString("AuthKey", "EMPTY")));
 
@@ -42,13 +42,9 @@ public class SettingsFragment extends Fragment {
                 editor.clear();
                 editor.commit();
 
-                moveToAuthenticationPage();
+                Intent intent = new Intent(getContext(), MainActivity.class);
+                startActivity(intent);
             }
         });
-    }
-
-    private void moveToAuthenticationPage() {
-        Intent intent = new Intent(getContext(), MainActivity.class);
-        startActivity(intent);
     }
 }
