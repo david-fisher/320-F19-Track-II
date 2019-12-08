@@ -1,3 +1,12 @@
 .Title {
   padding: 1rem;
 }
+.center{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+}
+.SocialIcons{
+  margin-left: .5px;;
+}
