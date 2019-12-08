@@ -23,4 +23,6 @@
     <string name="AllowCameraAccess">Allow app to access camera</string>
     <string name="authKey">Text</string>
     <string name="AllowGalleryAccess">Allow app to access gallery</string>
+    <string name="image_selector_description">Chosen Image</string>
+    <string name="upload_photo">Upload Image</string>
 </resources>

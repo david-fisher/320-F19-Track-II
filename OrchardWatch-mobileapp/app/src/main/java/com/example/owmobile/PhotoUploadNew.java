@@ -37,8 +37,11 @@ public class PhotoUploadNew extends Fragment {
     //Making the variables for later use
     Button takePhoto;
     Button takeGallery;
+    Button upload;
+
     ImageView photo;
     String filePath;
+
     static final int REQUEST_TAKE_PHOTO = 1;
     static final int REQUEST_CHOOSE_PHOTO = 2;
 
@@ -83,6 +86,18 @@ public class PhotoUploadNew extends Fragment {
                 chooseFromGallery();
             }
         });
+
+        //Upload image for processing.
+        photo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                uploadImage();
+            }
+        });
+    }
+
+    private void uploadImage() {
+
     }
 
     private void chooseFromGallery() {
@@ -106,7 +121,6 @@ public class PhotoUploadNew extends Fragment {
                 break;
             case FROM_GALLERY:
                 if (resultCode == Activity.RESULT_OK && data != null) {
-                    System.out.println(data.getDataString());
                     try {
                         InputStream is = getContext().getContentResolver().openInputStream(data.getData());
                         Bitmap bmp = BitmapFactory.decodeStream(is);
