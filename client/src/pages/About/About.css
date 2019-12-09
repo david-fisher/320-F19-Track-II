@@ -7,6 +7,13 @@
   margin-right: auto;
   width: 100%;
 }
+.margin-bottom{
+  margin-bottom: 1rem;
+}
 .SocialIcons{
-  margin-left: .5px;;
+  margin-left: .5px;
+}
+.scroll{
+  height: 400px;
+  overflow:auto;
 }

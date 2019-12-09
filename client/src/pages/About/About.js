@@ -3,8 +3,7 @@ import "./About.css";
 import { SocialIcon } from "react-social-icons";
 import { Container, Row } from "react-bootstrap";
 import {Timeline} from 'react-twitter-widgets';
-
-
+          
 export function About() {
   return (
     <div>
@@ -28,23 +27,22 @@ export function About() {
             elementum.
           </p>
       </Container>
-      <Container>
-        
+      <Container className = "scroll">
+        <Timeline
+          dataSource={{
+            sourceType: 'profile',
+            screenName: 'TweetingToaster'
+          }}
+          
+        /> 
       </Container>
-      <Container>
+      <Container className = "margin-bottom">
         <h2>Follow us on social media:</h2>
         <Row className = "SocialIcons">
           <SocialIcon url="http://facebook.com" />
           <SocialIcon url="http://instagram.com" />
           <SocialIcon url="http://twitter.com" />
         </Row>
-        <Timeline
-        dataSource={{
-          sourceType: 'profile',
-          screenName: 'TweetingToaster'
-        }}
-        
-      />
       </Container>
     </div>
   );
