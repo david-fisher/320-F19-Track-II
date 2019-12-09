@@ -28,6 +28,9 @@ export function About() {
           </p>
       </Container>
       <Container>
+        
+      </Container>
+      <Container>
         <h2>Follow us on social media:</h2>
         <Row className = "SocialIcons">
           <SocialIcon url="http://facebook.com" />
