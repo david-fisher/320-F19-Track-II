@@ -2,6 +2,7 @@ import React from "react";
 import "./About.css";
 import { SocialIcon } from "react-social-icons";
 import { Container, Row } from "react-bootstrap";
+import {Timeline} from 'react-twitter-widgets';
 
 
 export function About() {
@@ -37,7 +38,13 @@ export function About() {
           <SocialIcon url="http://instagram.com" />
           <SocialIcon url="http://twitter.com" />
         </Row>
-        <a class="twitter-timeline" href="https://twitter.com/TweetingToaster?ref_src=twsrc%5Etfw">Tweets by TweetingToaster</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+        <Timeline
+        dataSource={{
+          sourceType: 'profile',
+          screenName: 'TweetingToaster'
+        }}
+        
+      />
       </Container>
     </div>
   );
