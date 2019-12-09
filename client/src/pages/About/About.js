@@ -37,6 +37,7 @@ export function About() {
           <SocialIcon url="http://instagram.com" />
           <SocialIcon url="http://twitter.com" />
         </Row>
+        <a class="twitter-timeline" href="https://twitter.com/TweetingToaster?ref_src=twsrc%5Etfw">Tweets by TweetingToaster</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
       </Container>
     </div>
   );

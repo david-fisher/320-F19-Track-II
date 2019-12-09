@@ -13,7 +13,8 @@
     "react-image-gallery": "^0.9.1",
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.2.0",
-    "universal-cookie": "^4.0.2"
+    "universal-cookie": "^4.0.2",
+    "react-twitter-widgets": "1.7.1"
   },
   "scripts": {
     "start": "react-scripts start",
