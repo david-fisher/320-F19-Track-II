@@ -22,8 +22,14 @@ export default function App() {
         <Nav className="mr-auto">
           <Nav.Link href="/home">Home</Nav.Link>
           <Nav.Link href="/about">About Us</Nav.Link>
+          <Nav.Link href="/orchards">Orchards</Nav.Link>
           <Nav.Link href="/data">Data</Nav.Link>
           <Nav.Link href="/gallery">Gallery</Nav.Link>
+          <Nav.Link href="/observations">Observations</Nav.Link>
+          {token !== undefined  && ( //add this to each navbar item that should only appear while signed in
+            <Nav.Link href="/ask-ai">Ask AI</Nav.Link>
+          )}
+          
         </Nav>
 
         <Nav className="justify-content-end">
