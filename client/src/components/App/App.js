@@ -21,7 +21,8 @@ export default function App() {
         <Navbar.Brand href="/home">Orchard Watch</Navbar.Brand>
         <Nav className="mr-auto">
           <Nav.Link href="/home">Home</Nav.Link>
-          <Nav.Link href="/about">About</Nav.Link>
+          <Nav.Link href="/about">About Us</Nav.Link>
+          <Nav.Link href="/data">Data</Nav.Link>
           <Nav.Link href="/gallery">Gallery</Nav.Link>
         </Nav>
 
