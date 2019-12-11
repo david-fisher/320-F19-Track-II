@@ -6,10 +6,10 @@ import Dashboard from "../../pages/Dashboard/Dashboard";
 import Gallery from "../../pages/Gallery/Gallery";
 import Login from "../../pages/Login/Login";
 import Profile from "../../pages/Profile/Profile";
-import Observations from "../../pages/Observations/observations";
-import AI from "../../pages/AI/ai";
-import Data from "../../pages/Data/data";
-import Orchards from "../../pages/Orchards/orchards";
+import Observations from "../../pages/Observations/Observations";
+import AI from "../../pages/AI/AI";
+import Data from "../../pages/Data/Data";
+import Orchards from "../../pages/Orchards/Orchards";
 
 import NotFound from "../../pages/NotFound/NotFound";
 import UnauthenticatedRoute from "./UnauthenticatedRoute";
