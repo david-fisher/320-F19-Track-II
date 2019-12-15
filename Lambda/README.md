@@ -2,6 +2,14 @@
 # Fisermen-Lambda
 Click [here](https://github.com/david-fisher/320-F19-Track-II/wiki/Team-4:-The-FISHERmen) to see our team members.
 
+**Jump To Functions:**
+
+[UserRegistrationHandler](#userregistrationhandler)
+
+[UserLoginHandler](#userloginhandler)
+
+
+[MobileVerificationHandler](#mobileverificationhandler)
 
 ## Architecture
 ![](https://github.com/david-fisher/320-F19-Track-II/blob/master/Lambda/pics/UML.png)
