@@ -177,7 +177,7 @@ Thus, mobile APP should store that new key securely and permanently.
 **Request Format**:
 ```json
 {
-  "MobileKey": "9a5b59"
+  "MobileKey": <String>
 }
 ```
 `MobileKey`: Authorized user's key that are distributed by our system administrator.
