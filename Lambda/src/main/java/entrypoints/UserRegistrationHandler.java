@@ -6,6 +6,7 @@ import database.UserTableConnector;
 import exceptions.IllegalContentsException;
 import exceptions.IllegalRequestException;
 import exceptions.UserAlreadyExistException;
+import org.apache.http.HttpStatus;
 import requests.UserRegistrationRequest;
 import support.GatewayResponse;
 import support.RequestParser;
@@ -14,6 +15,13 @@ import support.UserRole;
 import java.util.HashMap;
 import java.util.Map;
 
+
+/**
+ * @author CSR
+ * @version 2019-12-15
+ * <p>
+ * Entry for user registration.
+ */
 public class UserRegistrationHandler extends AbstractHandler
 {
     @Override
@@ -31,7 +39,14 @@ public class UserRegistrationHandler extends AbstractHandler
         } catch (IllegalRequestException | IllegalContentsException e)
         {
             body.put("message", e.getMessage());
-            return new GatewayResponse(body, headers, 500);
+            return new GatewayResponse(body, headers, HttpStatus.SC_BAD_REQUEST);
+        }
+
+        //MUST BE PUBLIC
+        if (!request.getRole().toUpperCase().equals(UserRole.PUBLIC.name()))
+        {
+            body.put("message", "Cannot register a non-public account!");
+            return new GatewayResponse(body, headers, HttpStatus.SC_BAD_REQUEST);
         }
 
         UserTableConnector db = new UserTableConnector();
@@ -47,9 +62,9 @@ public class UserRegistrationHandler extends AbstractHandler
         } catch (AmazonServiceException | UserAlreadyExistException e)
         {
             body.put("message", e.getMessage());
-            return new GatewayResponse(body, headers, 500);
+            return new GatewayResponse(body, headers, HttpStatus.SC_INTERNAL_SERVER_ERROR);
         }
         body.put("message", "OK");
-        return new GatewayResponse(body, headers, 200);
+        return new GatewayResponse(body, headers, HttpStatus.SC_OK);
     }
 }

@@ -10,9 +10,9 @@ import java.util.*;
 
 /**
  * The type Request parser.
- *
+ * The parser class to parse inputted HashMap to construct a Request object.
  * @author CSR
- * @version 2019 -12-05 The parser class to parse inputted HashMap to construct a Request object.
+ * @version 2019 -12-05
  */
 public final class RequestParser
 {
