@@ -1,16 +1,11 @@
 package support;
 
-
-import exceptions.IllegalContentsException;
-
 import javax.crypto.Cipher;
 import javax.crypto.spec.SecretKeySpec;
 import java.nio.charset.StandardCharsets;
-import java.security.InvalidKeyException;
 import java.security.Key;
 import java.time.Instant;
 import java.util.Base64;
-import java.util.Date;
 
 /**
  * @author CSR

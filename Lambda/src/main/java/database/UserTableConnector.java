@@ -1,16 +1,20 @@
 package database;
 
-import com.amazonaws.services.dynamodbv2.document.DynamoDB;
 import com.amazonaws.services.dynamodbv2.document.Item;
 import com.amazonaws.services.dynamodbv2.document.QueryOutcome;
+import com.amazonaws.services.dynamodbv2.document.ScanOutcome;
 import com.amazonaws.services.dynamodbv2.document.internal.IteratorSupport;
 import com.amazonaws.services.dynamodbv2.document.spec.QuerySpec;
+import com.amazonaws.services.dynamodbv2.document.spec.UpdateItemSpec;
+import com.amazonaws.services.dynamodbv2.document.utils.NameMap;
+import com.amazonaws.services.dynamodbv2.document.utils.ValueMap;
 import com.amazonaws.services.dynamodbv2.model.AttributeValue;
 import exceptions.UserAlreadyExistException;
 import support.UserRole;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.UUID;
 
 /**
  * @author CSR
@@ -28,6 +32,7 @@ public class UserTableConnector extends DatabaseConnector
     protected static final String USER_FIRST_NAME_COLUMN = "FName";
     protected static final String USER_LAST_NAME_COLUMN = "LName";
     protected static final String USER_PASSWORD_COLUMN = "Password";
+    protected static final String USER_MOBILE_KEY_COLUMN = "MobileKey";
 
     /**
      * Default constructor. Will establish a link to DynamoDB.
@@ -70,22 +75,21 @@ public class UserTableConnector extends DatabaseConnector
         this.client.putItem(USER_TABLE, toAdd);
     }
 
-
     /**
-     * Get row in db according to email.
+     * Get specified row in db according to input email.
      *
-     * @param email the email
+     * @param email Table Name
      * @return Iterator for row
      */
     private IteratorSupport<Item, QueryOutcome> getRow(String email)
     {
-        String condition = String.format("%s = :email", USER_EMAIL_COLUMN, email);
+        String condition = String.format("%s = :v", USER_EMAIL_COLUMN, email);
         QuerySpec query = new QuerySpec();
         query.withKeyConditionExpression(condition).withValueMap(new HashMap<String, Object>()
         {{
-            put(":email", email);
+            put(":v", email);
         }});
-        return (new DynamoDB(client)).getTable(USER_TABLE).query(query).iterator();
+        return dynamoDB.getTable(USER_TABLE).query(query).iterator();
     }
 
     /**
@@ -120,6 +124,57 @@ public class UserTableConnector extends DatabaseConnector
         }
         String record = (String) item.get(USER_PASSWORD_COLUMN);
         return record.equals(password);
+    }
+
+    /**
+     * Query for mobile's verification.
+     * If input a right key, it will return owner's name, and generate a new access key
+     * as the permanent key for future use for mobile users.
+     * <p>
+     * Returned Map would be:
+     * {
+     * "Name": [Owner's Name]
+     * "Email": [Owner's Email]
+     * "Role": [Owner's Role]
+     * "Key": [New Access Key will be used]
+     * }
+     *
+     * @param accessKey the access key
+     * @return the Map with owner's email, name and new key. Null if no such owner.
+     */
+    public Map<String, String> mobileVerify(String accessKey)
+    {
+        IteratorSupport<Item, ScanOutcome> itr = super.getRow(USER_TABLE, USER_MOBILE_KEY_COLUMN, accessKey);
+        if (!itr.hasNext())
+        {
+            return null;
+        }
+        Map<String, Object> item = itr.next().asMap();
+        String name = (String) item.get(USER_FIRST_NAME_COLUMN) + " " + (String) item.get(USER_LAST_NAME_COLUMN);
+        String email = (String) item.get(USER_EMAIL_COLUMN);
+        String role = (String) item.get(USER_ROLE_COLUMN);
+        String newKey = UUID.randomUUID().toString();
+        String updateExpression = String.format("set %s = :v", USER_MOBILE_KEY_COLUMN);
+        UpdateItemSpec updateSpec = new UpdateItemSpec()
+                .withPrimaryKey(USER_EMAIL_COLUMN, email, USER_ROLE_COLUMN, role)
+                .withUpdateExpression(updateExpression)
+                .withValueMap(new ValueMap().with(":v", newKey));
+
+        try
+        {
+            dynamoDB.getTable(USER_TABLE).updateItem(updateSpec);
+        } catch (Exception e)
+        {
+            throw new IllegalStateException("Find User but fail to save new key!\n" + e.getMessage());
+        }
+        Map<String, String> ret = new HashMap<String, String>()
+        {{
+            put("Name", name);
+            put("Email", email);
+            put("Role", role);
+            put("Key", newKey);
+        }};
+        return ret;
     }
 
 
