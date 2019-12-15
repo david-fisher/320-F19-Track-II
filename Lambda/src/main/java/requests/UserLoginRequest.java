@@ -8,7 +8,7 @@ import support.RegularExpressionInputValidator;
  * Request of user log-in
  *
  * @author CSR
- * @version 2019 -12-15
+ * @version 2019-12-15
  */
 public class UserLoginRequest implements RequestInterface
 {
