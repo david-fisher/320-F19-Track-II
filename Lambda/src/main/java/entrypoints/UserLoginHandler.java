@@ -30,7 +30,7 @@ public class UserLoginHandler extends AbstractHandler
         headers.put("Content-Type", "application/json");
         headers.put("X-Custom-Header", "application/json");
 
-        Map<String, String> body = new HashMap<>();
+        Map<String, Object> body = new HashMap<>();
         UserLoginRequest request = null;
         try
         {
