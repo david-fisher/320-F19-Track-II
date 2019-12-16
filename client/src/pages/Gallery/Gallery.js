@@ -43,7 +43,27 @@ const IMAGES =
   caption: "Boats (Jeshu John - designerspics.com)"
 }
 ]
+function onSelectImage (index, image) {
+  var images = this.state.images.slice();
+  var img = images[index];
+  if(img.hasOwnProperty("isSelected"))
+      img.isSelected = !img.isSelected;
+  else
+      img.isSelected = true;
 
+  this.setState({
+      images: images
+  });
+}
+function getSelected(){
+  var selectedArr = [];
+  for(let i = 0; i < IMAGES.length; i++){
+    if(IMAGES[i].isSelected){
+      selectedArr.append(IMAGES[i]);
+    }
+  } 
+  return selectedArr;
+}
 export default function Galler() {
   return (
     <div>
@@ -52,7 +72,7 @@ export default function Galler() {
         <hr />
       </Container>
       <Container>
-        <Gallery images={IMAGES} center/>
+        <Gallery images={IMAGES} onSelectImage = {onSelectImage} />
       </Container>
     </div>
   );
