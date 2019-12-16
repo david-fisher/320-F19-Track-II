@@ -22,7 +22,8 @@
     "react-split-pane": "^0.1.89",
     "react-twitter-widgets": "1.7.1",
     "start": "^5.1.0",
-    "universal-cookie": "^4.0.2"
+    "universal-cookie": "^4.0.2",
+    "react-vis": "^1.11.7"
   },
   "scripts": {
     "start": "react-scripts start",
