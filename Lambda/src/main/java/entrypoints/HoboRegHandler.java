@@ -7,6 +7,7 @@ import exceptions.TimestampAlreadyExistException;
 import org.apache.http.HttpStatus;
 import support.GatewayResponse;
 
+import java.time.Instant;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -32,15 +33,15 @@ public class HoboRegHandler extends AbstractHandler
         try
         {
             db.addHobo(
-                    2/*,
-                    "2",
-                    3,
-                    4,
-                    5,
-                    6,
-                    7,
-                    8,
-                    9*/
+                    (int)Instant.now().getEpochSecond(),    //now
+                    (int)(Math.random()*999+1)+"-"+(int)(Math.random()*999+1),  //001-001 to 999-999 (Unit: N/A)
+                    (int)(Math.random()*101), //0 to 100 (Unit: %)
+                    (int)(Math.random()*16),  //0 to 15 (Unit: level) (completely dry to saturated)
+                    (int)(Math.random()*101),  //0 to 100 (Unit: mm)
+                    (int)(Math.random()*36+10),  //10 to 45 (Unit: %)
+                    (int)(Math.random()*999901+100),  //100 to 1000000 (Unit: nm)
+                    (int)(Math.random()*107-2),  // -2 to 104 (Unit: F)(MA record)
+                    (int)(Math.random()*12) // 0-12 (Unit: level)
             );
         } catch (AmazonServiceException | TimestampAlreadyExistException e)
         {
@@ -50,4 +51,5 @@ public class HoboRegHandler extends AbstractHandler
         body.put("message", "OK");
         return new GatewayResponse(body, headers, HttpStatus.SC_OK);
     }
+
 }
