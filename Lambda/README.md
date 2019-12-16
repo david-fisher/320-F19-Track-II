@@ -270,7 +270,7 @@ $EncodedText
 
 `MobileKey`: MobileKey returend by [MobileVerificationHandler](#mobileverificationhandler). It should be already stored safely in user's phone. If you are not mobile end, use empty string. **Do not omit.**
 
-"Image": Base64-Encoded Images. Must in PNG or JPEG format. Must be encoded directly from bytes. Should not contains any headers.
+`Image`: Base64-Encoded Images. Must in PNG or JPEG format. Must be encoded directly from bytes. Should not contains any headers.
 
 **Response Format**
 
