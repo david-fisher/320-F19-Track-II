@@ -13,6 +13,8 @@ Click [here](https://github.com/david-fisher/320-F19-Track-II/wiki/Team-4:-The-F
 
 [ImageUploadHandler](#ImageUploadHandler)
 
+[GetImagesHandlers](#GetImagesHandlers)
+
 ## Architecture
 ![](https://github.com/david-fisher/320-F19-Track-II/blob/master/Lambda/pics/UML.png)
 ### Process
@@ -43,7 +45,7 @@ Register user from website.
 
 **Java Entry Point**: `entrypoints.UserRegistrationHandler::handleRequest`
 
-**API Gatway EndPoints:** Waiting For Cloud Team
+**API Gatway EndPoints:** POST `https://mt7pf3aohi.execute-api.us-east-2.amazonaws.com/test/register-user`
 
 **Request Format**:
 ```json
@@ -102,7 +104,7 @@ Used for web front end. Will return a token (works like cookies) when succeed.
 
 Token is valid for 24 hours, it was generated through AES encryption and encoded through Base64.
 
-**API Gatway EndPoints:** Waiting For Cloud Team
+**API Gatway EndPoints:** GET `https://mt7pf3aohi.execute-api.us-east-2.amazonaws.com/test/user-login`
 
 **Request Format**:
 ```json
@@ -174,7 +176,7 @@ And the APP will call this function for verification. If succeed, it will get us
 
 Thus, mobile APP should store that new key securely and permanently.
 
-**API Gatway EndPoints:** Waiting For Cloud Team
+**API Gatway EndPoints:** GET `https://mt7pf3aohi.execute-api.us-east-2.amazonaws.com/test/mobile-verification`
 
 **Request Format**:
 ```json
@@ -253,7 +255,7 @@ $EncodedText =[Convert]::ToBase64String($bytes)
 $EncodedText
 ```
 
-**API Gatway EndPoints:** Waiting For Cloud Team
+**API Gatway EndPoints:** POST `https://mt7pf3aohi.execute-api.us-east-2.amazonaws.com/test/image-upload `
 
 **Request Format**:
 ```json
@@ -313,5 +315,97 @@ Example
     "Content-Type": "application/json"
   },
   "statusCode": 401
+}
+```
+
+----
+
+
+### GetImagesHandlers
+
+**Java Entry Point**: `entrypoints.GetImagesHandlers::handleRequest`
+
+Get Images From S3 and Database. ML results also returned here.
+
+Requested through a time-span in [Unix Epoch](https://en.wikipedia.org/wiki/Unix_time) format.
+
+Returned objects consistents of two fileds, 
+
+`body.Images` is a list of links to S3, pre-signed links are valid for 1 hour.
+
+`body.ImageInfo` is a list of json obejct, each of them contains information about owner and machine learning result.
+
+
+**API Gatway EndPoints:** `https://mt7pf3aohi.execute-api.us-east-2.amazonaws.com/test/get-image`
+
+**Request Format**:
+```json
+{
+  "StartTime": <String>
+  "EndTime": <String>
+}
+```
+`StartTime`: A string contains Start time of time span in  [Unix Epoch](https://en.wikipedia.org/wiki/Unix_time) format. 
+
+`EndTime`: A string contains Start time of time span in  [Unix Epoch](https://en.wikipedia.org/wiki/Unix_time) format.
+
+**Response Format**
+
+Success Response: HTTP-200(OK)
+
+
+
+Example:
+```json
+{
+  "body": {
+    "Images": [<String>,<String>,...],
+    "ImageInfo":[ 
+    {
+        "S3": <String>,
+        "Annotated": <Boolean>,
+        "Prediction": <String>,
+        "ID": <Int>,
+        "Uploader": <String>,
+        "Timestamp": <Number>
+      },...]
+  }
+}
+```
+
+`Images`: A list of links to images, pre-signed links are valid for 1 hour. Put the links in broswer can directly view images.
+
+`ImageInfo.S3`: S3 path of file.
+
+`ImageInfo.Annotated`: Whether the image was annotated by machine learning.
+
+`ImageInfo.Pridiction`: Machine learning's result.
+
+`ImageInfo.ID`: Image's uid.
+
+`ImageInfo.Uploader`: Uploader of image.
+
+`ImageInfo.Timestamp`: The time when image was uploaded, in Unix Epoch format.
+
+Failure Response:
+
+All failed response will contain error message in `body.message`.
+
+HTTP-400(BAD REQUEST) If request is not in correct format.
+
+HTTP-500(INTERNAL SERVER ERROR) If the function does not work as expected. Or if your image is not in correct base64 format.
+
+
+Example
+```json
+{
+  "body": {
+    "message": "Missing necessary attribute 'startTime'!"
+  },
+  "headers": {
+    "X-Custom-Header": "application/json",
+    "Content-Type": "application/json"
+  },
+  "statusCode": 400
 }
 ```
