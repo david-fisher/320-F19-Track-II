@@ -28,7 +28,7 @@ public class S3Adapter
 
     public String putImage(byte[] image, String filename)
     {
-        filename = filename + "-" + String.valueOf(System.currentTimeMillis());
+        filename = String.valueOf(System.currentTimeMillis()) + "-" + filename;
         ByteArrayInputStream inputStream = new ByteArrayInputStream(image);
         client.putObject(IMAGE_BUCKET, filename, inputStream, new ObjectMetadata());
         return "s3://" + IMAGE_BUCKET + "/" + filename;
