@@ -11,6 +11,8 @@ Click [here](https://github.com/david-fisher/320-F19-Track-II/wiki/Team-4:-The-F
 
 [MobileVerificationHandler](#mobileverificationhandler)
 
+[ImageUploadHandler](#ImageUploadHandler)
+
 ## Architecture
 ![](https://github.com/david-fisher/320-F19-Track-II/blob/master/Lambda/pics/UML.png)
 ### Process
