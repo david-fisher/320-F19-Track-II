@@ -1,19 +1,25 @@
 package database;
 
-import com.amazonaws.services.dynamodbv2.document.Item;
-import com.amazonaws.services.dynamodbv2.document.QueryOutcome;
-import com.amazonaws.services.dynamodbv2.document.ScanOutcome;
+import com.amazonaws.services.dynamodbv2.document.*;
 import com.amazonaws.services.dynamodbv2.document.internal.IteratorSupport;
+import com.amazonaws.services.dynamodbv2.document.spec.GetItemSpec;
 import com.amazonaws.services.dynamodbv2.document.spec.QuerySpec;
 import com.amazonaws.services.dynamodbv2.document.spec.ScanSpec;
+import com.amazonaws.services.dynamodbv2.document.utils.NameMap;
 import com.amazonaws.services.dynamodbv2.document.utils.ValueMap;
 import com.amazonaws.services.dynamodbv2.model.AttributeValue;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import exceptions.TimestampAlreadyExistException;
 
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 /**
  * @author lwb
- * @version 2019-12-15
+ * @version 2019-12-16
  * Hobo Table Connector.
  */
 public class HoboTableConnector extends DatabaseConnector {
@@ -39,6 +45,25 @@ public class HoboTableConnector extends DatabaseConnector {
         super();
     }
 
+    public List<Map<String, Object>> getHobo(long startTime, long endTime)
+    {
+        if (endTime < startTime)
+        {
+            return new ArrayList<>();
+        }
+        ScanSpec scanSpec = new ScanSpec()
+                .withFilterExpression("#ts >= :v1 and #ts <= :v2")
+                .withNameMap(new NameMap().with("#ts", HOBO_TIMESTAMP_COLUMN))
+                .withValueMap(new ValueMap().withNumber(":v1", startTime).withNumber(":v2", endTime));
+        IteratorSupport<Item, ScanOutcome> itr = dynamoDB.getTable(HOBO_TABLE).scan(scanSpec).iterator();
+        if (!itr.hasNext())
+        {
+            return new ArrayList<>();
+        }
+        List<Map<String, Object>> entries = new ArrayList<>();
+        itr.forEachRemaining(i -> entries.add(i.asMap()));
+        return entries;
+    }
     /**
      * Register Hobo sensors to Hobo Table.
      *
@@ -52,7 +77,6 @@ public class HoboTableConnector extends DatabaseConnector {
      * @param Temperature  the Temperature
      * @param Wind  the Wind
      */
-
     public void addHobo(int Epochtime, String HoboID, int Humidity, int LeafWetness, int Rainfall, int SoilMoisture,
                         int SolarRadiation, int Temperature, int Wind)
             throws TimestampAlreadyExistException {
