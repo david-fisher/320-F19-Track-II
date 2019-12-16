@@ -1,38 +1,25 @@
 package support;
 
-import java.util.Collections;
-import java.util.HashMap;
+import com.amazonaws.serverless.proxy.internal.model.AwsProxyResponse;
+import com.google.gson.Gson;
+
+
 import java.util.Map;
 
 /**
- * POJO containing response object for API Gateway.
+ * Repack for AwsProxyResponse
+ *
+ * @author CSR
+ * @version 2019-12-15
  */
-public class GatewayResponse
+public class GatewayResponse extends AwsProxyResponse
 {
-
-    private final Map<String, String> body;
-    private final Map<String, String> headers;
-    private final int statusCode;
-
     public GatewayResponse(final Map<String, String> body, final Map<String, String> headers, final int statusCode)
     {
-        this.statusCode = statusCode;
-        this.body = body;
-        this.headers = Collections.unmodifiableMap(new HashMap<>(headers));
+        super();
+        this.setStatusCode(statusCode);
+        this.setHeaders(headers);
+        this.setBody(new Gson().toJson(body).toString());
     }
 
-    public Map<String, String> getBody()
-    {
-        return body;
-    }
-
-    public Map<String, String> getHeaders()
-    {
-        return headers;
-    }
-
-    public int getStatusCode()
-    {
-        return statusCode;
-    }
 }

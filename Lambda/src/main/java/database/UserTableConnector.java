@@ -4,11 +4,13 @@ import com.amazonaws.services.dynamodbv2.document.Item;
 import com.amazonaws.services.dynamodbv2.document.QueryOutcome;
 import com.amazonaws.services.dynamodbv2.document.ScanOutcome;
 import com.amazonaws.services.dynamodbv2.document.internal.IteratorSupport;
+import com.amazonaws.services.dynamodbv2.document.spec.PutItemSpec;
 import com.amazonaws.services.dynamodbv2.document.spec.QuerySpec;
 import com.amazonaws.services.dynamodbv2.document.spec.UpdateItemSpec;
 import com.amazonaws.services.dynamodbv2.document.utils.NameMap;
 import com.amazonaws.services.dynamodbv2.document.utils.ValueMap;
 import com.amazonaws.services.dynamodbv2.model.AttributeValue;
+import com.amazonaws.services.dynamodbv2.model.PutItemRequest;
 import exceptions.UserAlreadyExistException;
 import support.UserRole;
 
@@ -144,15 +146,10 @@ public class UserTableConnector extends DatabaseConnector
      */
     public Map<String, String> mobileVerify(String accessKey)
     {
-        IteratorSupport<Item, ScanOutcome> itr = super.getRow(USER_TABLE, USER_MOBILE_KEY_COLUMN, accessKey);
-        if (!itr.hasNext())
-        {
-            return null;
-        }
-        Map<String, Object> item = itr.next().asMap();
-        String name = (String) item.get(USER_FIRST_NAME_COLUMN) + " " + (String) item.get(USER_LAST_NAME_COLUMN);
-        String email = (String) item.get(USER_EMAIL_COLUMN);
-        String role = (String) item.get(USER_ROLE_COLUMN);
+        Map<String, String> search = mobileAuthenticate(accessKey);
+        String name = search.get("Name");
+        String email = search.get("Email");
+        String role = search.get("Role");
         String newKey = UUID.randomUUID().toString();
         String updateExpression = String.format("set %s = :v", USER_MOBILE_KEY_COLUMN);
         UpdateItemSpec updateSpec = new UpdateItemSpec()
@@ -173,6 +170,37 @@ public class UserTableConnector extends DatabaseConnector
             put("Email", email);
             put("Role", role);
             put("Key", newKey);
+        }};
+        return ret;
+    }
+
+
+    /**
+     * Mobile authentication.
+     *
+     * Return user's info if access key is valid.
+     *
+     * Else null.
+     *
+     * @param accessKey the access key
+     * @return User info map if valid key. Null other wise.
+     */
+    public Map<String, String> mobileAuthenticate(String accessKey)
+    {
+        IteratorSupport<Item, ScanOutcome> itr = super.getRow(USER_TABLE, USER_MOBILE_KEY_COLUMN, accessKey);
+        if (!itr.hasNext())
+        {
+            return null;
+        }
+        Map<String, Object> item = itr.next().asMap();
+        String name = (String) item.get(USER_FIRST_NAME_COLUMN) + " " + (String) item.get(USER_LAST_NAME_COLUMN);
+        String email = (String) item.get(USER_EMAIL_COLUMN);
+        String role = (String) item.get(USER_ROLE_COLUMN);
+        Map<String, String> ret = new HashMap<String, String>()
+        {{
+            put("Name", name);
+            put("Email", email);
+            put("Role", role);
         }};
         return ret;
     }

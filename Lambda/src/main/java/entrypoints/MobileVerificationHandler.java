@@ -34,6 +34,7 @@ public class MobileVerificationHandler extends AbstractHandler
         try
         {
             request = RequestParser.parse(input, MobileVerificationRequest.class);
+            request = RequestParser.parse(input, MobileVerificationRequest.class);
         } catch (IllegalRequestException | IllegalContentsException e)
         {
             body.put("message", e.getMessage());
