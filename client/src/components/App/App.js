@@ -33,6 +33,15 @@ export default function App() {
         </Nav>
 
         <Nav className="justify-content-end">
+          {token === undefined && (
+            <Dropdown as={NavItem}>
+              <Dropdown.Toggle as={Nav.Link}>Register</Dropdown.Toggle>
+              <Dropdown.Menu alignRight={true}>
+                <Dropdown.Item href="/profile">General Public</Dropdown.Item>
+                <Dropdown.Item href="/dashboard">Researcher/Grower</Dropdown.Item>
+              </Dropdown.Menu>
+            </Dropdown>
+          )}
           {token === undefined && <Nav.Link href="/login">Login</Nav.Link>}
           {token !== undefined && (
             <Dropdown as={NavItem}>
