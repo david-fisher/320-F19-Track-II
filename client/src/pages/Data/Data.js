@@ -74,6 +74,16 @@ class Select extends React.Component {
   }
 }
 
+var selected = "Order By";
+function onSelectOldest() {
+  var x = document.getElementById("toggle");
+  x.innerHTML = "Oldest";
+}
+function onSelectRecent() {
+  var x = document.getElementById("toggle");
+  x.innerHTML = "Recent";
+}
+
 export default function Data() {
   return (
     <div>
