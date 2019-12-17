@@ -3,29 +3,38 @@ import {Container} from "react-bootstrap";
 import ReactSearchBox from 'react-search-box'
 import { Nav, Navbar, Dropdown, NavItem } from "react-bootstrap";
 
+import { VictoryLine, VictoryChart, VictoryLabel, VictoryAxis } from 'victory';
 
 const data = [
-  {
-    key: 'john',
-    value: 'John Doe',
-  },
-  {
-    key: 'jane',
-    value: 'Jane Doe',
-  },
-  {
-    key: 'mary',
-    value: 'Mary Phillips',
-  },
-  {
-    key: 'robert',
-    value: 'Robert',
-  },
-  {
-    key: 'karius',
-    value: 'Karius',
-  },
+{date: 1, apple: 10},
+{date: 2, apple: 11},
+{date: 3, apple: 20},
+{date: 4, apple: 50},
+{date: 5, apple: 22},
+{date: 6, apple: 10},
+{date: 7, apple: 40},
+{date: 8, apple: 22},
 ]
+class App extends React.Component {
+  render() {
+    return (
+      <VictoryChart
+        // domainPadding will add space to each side of VictoryBar to
+        // prevent it from overlapping the axis
+        domainPadding={20}
+      >
+        <VictoryLabel text="Apple" x={30} y={30} textAnchor="middle"/>
+        <VictoryLabel text="Day" x={410} y={270} textAnchor="middle"/>
+        <VictoryLine
+          data={data}
+          x="date"
+          y="apple"
+      />
+      </VictoryChart>
+    )
+  }
+}
+
 var selected = "Order By"
 function onSelectOldest(){
   var x = document.getElementById("toggle");
@@ -61,6 +70,9 @@ export default function Data(){
               </Dropdown.Menu>
             </Dropdown>
           </div>
+        </div>
+        <div class = "container">
+          <App/>
         </div>
       </div>
     </div>
