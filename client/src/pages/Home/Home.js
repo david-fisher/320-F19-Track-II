@@ -2,17 +2,17 @@ import React from "react";
 import { Jumbotron, Container } from "react-bootstrap";
 import GoogleMapReact from 'google-map-react'
 
-
+//some random points from the map for data sim
 const center =  {
   center: {
-    lat: 59.95,
-    lng: 30.33
+    lat: 42.254009,
+    lng: -72.360191
   },
-  zoom: 11
+  zoom: 15
 }
 const heatmapPoints =  [
-  {lat: 59.95, lng: 30.33},
-  {lat: 59.96, lng: 30.32}
+  {lat: 42.255224, lng: -72.361650},
+  {lat: 42.253517, lng: -72.358807}
 ]
 const apiKey = {key: ''} //my guess is we will not have a paid api key by demo time
 const heatMapData = {
@@ -22,6 +22,10 @@ const heatMapData = {
     opacity: 0.6
   }
 }
+const options = {mapTypeId: 'satellite'}
+
+
+
 
 
 export default function Home() {
@@ -34,7 +38,7 @@ export default function Home() {
         </Container>
       </Jumbotron>
       <Container>
-      <div style={{ height: '100vh', width: '100%' }}>
+      <div style={{ height: '50vh', width: '100%' }}>
       <GoogleMapReact
           // ref={(el) => this._googleMap = el}
           bootstrapURLKeys={apiKey}
@@ -42,6 +46,7 @@ export default function Home() {
           defaultZoom={center.zoom}
           heatmapLibrary={true}
           heatmap={heatMapData}
+          options={options}
         >
         </GoogleMapReact>
 
