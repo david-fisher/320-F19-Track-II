@@ -3,7 +3,9 @@ package database;
 import com.amazonaws.services.dynamodbv2.document.Item;
 import com.amazonaws.services.dynamodbv2.document.QueryOutcome;
 import com.amazonaws.services.dynamodbv2.document.ScanOutcome;
+import com.amazonaws.services.dynamodbv2.document.Table;
 import com.amazonaws.services.dynamodbv2.document.internal.IteratorSupport;
+import com.amazonaws.services.dynamodbv2.document.spec.GetItemSpec;
 import com.amazonaws.services.dynamodbv2.document.spec.PutItemSpec;
 import com.amazonaws.services.dynamodbv2.document.spec.QuerySpec;
 import com.amazonaws.services.dynamodbv2.document.spec.UpdateItemSpec;
@@ -206,4 +208,13 @@ public class UserTableConnector extends DatabaseConnector
     }
 
 
+    public Object getUserInfo(String email) {
+        IteratorSupport<Item, QueryOutcome> itr = getRow(email);
+        if (!itr.hasNext()) {
+            return false;
+        }
+        Map<String, Object> item = itr.next().asMap();
+        item.remove("Password");
+        return item;
+    }
 }

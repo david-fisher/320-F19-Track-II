@@ -27,7 +27,7 @@ Click [here](https://github.com/david-fisher/320-F19-Track-II/wiki/Team-4:-The-F
 5. Returned Object is parsed by AWS API Gateway and send back to front end.
 
 ## API Document
-Author(s): [@charlescao460](https://github.com/charlescao460)
+Author(s): [@charlescao460](https://github.com/charlescao460),[@lwbhahahaha](https://github.com/lwbhahahaha)
 
 **Since AWS Lambda has no directly exposed endpoints, all hanlders need to be configured accordingly in API Gateway.**
 
@@ -100,7 +100,7 @@ HTTP-500(INTERNAL SERVER ERROR) If the function does not work as expected.
 ### UserLoginHandler
 **Java Entry Point**: `entrypoints.UserLoginHandler::handleRequest`
 
-Used for web front end. Will return a token (works like cookies) when succeed.
+Used for web front end. Will return user info without password and a token (works like cookies) when succeed.
 
 `body.token` will then be used as credentials when required.
 
@@ -124,12 +124,20 @@ Success Response: HTTP-200(OK)
 
 `body.token`: The token that valid for 24 hours as a credentials.
 
+`body.userinfo`: The user info.
+
 Example:
 ```json
 {
   "body": {
+    "userinfo": {
+      "Role": "PUBLIC",
+      "LName": "LName",
+      "EMail": "email2@test.com",
+      "FName": "FName"
+    },
     "message": "OK",
-    "token": "YBpn61KXOI5mbZUIElY5CT24ZIVflWU1DhD6ExCwcvk="
+    "token": "VoVsgAcbWNsUlwCgxtXHtDTOr6p0vSP/tjho+699C8Q="
   },
   "headers": {
     "X-Custom-Header": "application/json",
@@ -154,7 +162,7 @@ Example
 ```json
 {
   "body": {
-    "message": "Email and Password do not match."
+    "message": "UNAUTHORIZED:Email and Password do not match."
   },
   "headers": {
     "X-Custom-Header": "application/json",
@@ -227,7 +235,7 @@ Example
 ```json
 {
   "body": {
-    "message": "Cannot find user with such key!"
+    "message": "UNAUTHORIZED:Cannot find user with such key!"
   },
   "headers": {
     "X-Custom-Header": "application/json",
@@ -310,7 +318,7 @@ Example
 ```json
 {
   "body": {
-    "message": "Token/MobileKey incorrect!"
+    "message": "UNAUTHORIZED:Token/MobileKey incorrect!"
   },
   "headers": {
     "X-Custom-Header": "application/json",
@@ -402,7 +410,7 @@ Example
 ```json
 {
   "body": {
-    "message": "Missing necessary attribute 'startTime'!"
+    "message": "BAD REQUEST:Missing necessary attribute 'startTime'!"
   },
   "headers": {
     "X-Custom-Header": "application/json",
