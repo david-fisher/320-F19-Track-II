@@ -126,7 +126,23 @@ Success Response: HTTP-200(OK)
 
 Example:
 ```json
-{"body":{"user info:":{"Role":"PUBLIC","LName":"LName","EMail":"email2@test.com","FName":"FName"},"message":"OK","token":"VoVsgAcbWNsUlwCgxtXHtDTOr6p0vSP/tjho+699C8Q="},"headers":{"X-Custom-Header":"application/json","Content-Type":"application/json"},"statusCode":200}
+{
+  "body": {
+    "user info:": {
+      "Role": "PUBLIC",
+      "LName": "LName",
+      "EMail": "email2@test.com",
+      "FName": "FName"
+    },
+    "message": "OK",
+    "token": "VoVsgAcbWNsUlwCgxtXHtDTOr6p0vSP/tjho+699C8Q="
+  },
+  "headers": {
+    "X-Custom-Header": "application/json",
+    "Content-Type": "application/json"
+  },
+  "statusCode": 200
+}
 ```
 
 
