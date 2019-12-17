@@ -11,8 +11,8 @@ const center =  {
   zoom: 15
 }
 const heatmapPoints =  [
-  {lat: 42.255224, lng: -72.361650},
-  {lat: 42.253517, lng: -72.358807}
+  {lat: 42.255224, lng: -72.361650, weight: 100},
+  {lat: 42.253517, lng: -72.358807, weight: 10}
 ]
 const apiKey = {key: ''} //my guess is we will not have a paid api key by demo time
 const heatMapData = {
