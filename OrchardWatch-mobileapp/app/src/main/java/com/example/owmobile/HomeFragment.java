@@ -29,6 +29,6 @@ public class HomeFragment extends Fragment {
         webView = view.findViewById(R.id.webView);
         webView.setWebViewClient(wvc);
         webView.getSettings().setJavaScriptEnabled(true);
-        webView.loadUrl("http://d3gvvf4yx7ay63.cloudfront.net/");
+        webView.loadUrl("https://orchardwatch.surge.sh");
     }
 }
