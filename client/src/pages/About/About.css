@@ -7,11 +7,16 @@
   margin-right: auto;
   width: 100%;
 }
-.margin-bottom {
-  margin-bottom: 1rem;
+.footer{
+  height:70px;
+  width:100%;
+  font-size: 30px;
+  color:white;
+  padding-top: 10px;
 }
+
 .SocialIcons {
-  margin-left: 0.5px;
+  margin-right:16px;
 }
 .scroll {
   height: 400px;

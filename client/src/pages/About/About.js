@@ -35,16 +35,17 @@ export function About() {
           }}
         />
       </Container>
-      <Container className="margin-bottom">
-        <h2>Follow us on social media:</h2>
-        <Row className="SocialIcons">
-          <SocialIcon url="http://facebook.com" />
-          <SocialIcon url="http://instagram.com" />
-          <SocialIcon url="http://twitter.com" />
-        </Row>
-      </Container>
+      <footer  class="page-footer font-small bg-dark footer">
+        Social Media    
+        <SocialIcon url="http://facebook.com" />
+        <SocialIcon url="http://instagram.com" />
+        <SocialIcon url="http://twitter.com" />
+      </footer>
     </div>
+    
   );
 }
+
+
 
 export default About;
