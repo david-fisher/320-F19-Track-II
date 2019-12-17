@@ -11,7 +11,7 @@ export default function Home() {
         </Container>
       </Jumbotron>
       <Container>
-        <p class="lead">
+        <p className="lead">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras pulvinar
           pharetra felis, id faucibus magna. Donec iaculis sagittis leo, at
           dictum metus volutpat eget. Praesent iaculis sit amet mauris ut
@@ -26,7 +26,7 @@ export default function Home() {
         </p>
       </Container>
       <Container>
-        <p class="lead">
+        <p className="lead">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras pulvinar
           pharetra felis, id faucibus magna. Donec iaculis sagittis leo, at
           dictum metus volutpat eget. Praesent iaculis sit amet mauris ut

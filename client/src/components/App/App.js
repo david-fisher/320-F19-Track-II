@@ -26,10 +26,8 @@ export default function App() {
           <Nav.Link href="/data">Data</Nav.Link>
           <Nav.Link href="/gallery">Gallery</Nav.Link>
           <Nav.Link href="/observations">Observations</Nav.Link>
-          {token !== undefined  && ( //add this to each navbar item that should only appear while signed in
-            <Nav.Link href="/ask-ai">Ask AI</Nav.Link>
-          )}
-          
+          {token !== undefined && <Nav.Link href="/ask-ai">Ask AI</Nav.Link> //add this to each navbar item that should only appear while signed in
+          }
         </Nav>
 
         <Nav className="justify-content-end">
@@ -38,7 +36,9 @@ export default function App() {
               <Dropdown.Toggle as={Nav.Link}>Register</Dropdown.Toggle>
               <Dropdown.Menu alignRight={true}>
                 <Dropdown.Item href="/profile">General Public</Dropdown.Item>
-                <Dropdown.Item href="/dashboard">Researcher/Grower</Dropdown.Item>
+                <Dropdown.Item href="/dashboard">
+                  Researcher/Grower
+                </Dropdown.Item>
               </Dropdown.Menu>
             </Dropdown>
           )}

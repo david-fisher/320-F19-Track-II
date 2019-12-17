@@ -13,14 +13,43 @@ export default function Login() {
 
   function handleSubmit(event) {
     event.preventDefault();
-    if (password === "admin") {
-      const cookies = new Cookies();
-      cookies.set("name", "David", { path: "/" });
-      cookies.set("token", "test_token_value", { path: "/" });
-      alert("Logged in");
-      window.location.reload();
+
+    if (password !== "password") {
+      alert("Invalid password");
     } else {
-      alert("Invalid credentials");
+      fetch(
+        "https://mt7pf3aohi.execute-api.us-east-2.amazonaws.com/test/user-login",
+        {
+          method: "POST",
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({
+            Email: "test@test.com",
+            Password: "password"
+          })
+        }
+      )
+        .then(response => {
+          if (response.status >= 200 && response.status < 300) {
+            return response.json();
+          } else {
+            throw new Error("Server can't be reached!");
+          }
+        })
+        .then(json => {
+          console.log("hooray! we have json!");
+          console.log(json);
+          const cookies = new Cookies();
+          cookies.set("name", "David", { path: "/" });
+          cookies.set("token", "test_token_value", { path: "/" });
+          alert("Logged in");
+          window.location.reload();
+        })
+        .catch(error => {
+          alert("Invalid credentials");
+        });
     }
   }
 

@@ -1,5 +1,5 @@
 import React from "react";
-import {Container } from "react-bootstrap";
+import { Container } from "react-bootstrap";
 
 export default function AI() {
   return (
@@ -8,7 +8,6 @@ export default function AI() {
         <h1>Ask AI Page</h1>
         <hr />
       </Container>
-      
     </div>
   );
 }

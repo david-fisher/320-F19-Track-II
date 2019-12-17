@@ -1,19 +1,19 @@
 .Title {
   padding: 1rem;
 }
-.center{
+.center {
   display: block;
   margin-left: auto;
   margin-right: auto;
   width: 100%;
 }
-.margin-bottom{
+.margin-bottom {
   margin-bottom: 1rem;
 }
-.SocialIcons{
-  margin-left: .5px;
+.SocialIcons {
+  margin-left: 0.5px;
 }
-.scroll{
+.scroll {
   height: 400px;
-  overflow:auto;
+  overflow: auto;
 }

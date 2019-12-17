@@ -21,7 +21,7 @@ export default function Routes() {
       <Redirect exact from="/" to="/home" />
       <Route path="/home" exact component={Home} />
       <Route path="/about" exact component={About} />
-      <Route path = "/gallery" exact component={Gallery} />>
+      <Route path="/gallery" exact component={Gallery} />>
       <AuthenticatedRoute path="/dashboard" exact component={Dashboard} />
       <UnauthenticatedRoute path="/login" exact component={Login} />
       <AuthenticatedRoute path="/profile" exact component={Profile} />
