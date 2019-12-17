@@ -15,6 +15,8 @@ Click [here](https://github.com/david-fisher/320-F19-Track-II/wiki/Team-4:-The-F
 
 [GetImagesHandlers](#GetImagesHandlers)
 
+[HoboPullDataHandler](#HoboPullDataHandler)
+
 ## Architecture
 ![](https://github.com/david-fisher/320-F19-Track-II/blob/master/Lambda/pics/UML.png)
 ### Process
@@ -409,3 +411,112 @@ Example
   "statusCode": 400
 }
 ```
+
+
+-----
+### hoboPullSensorHandler
+
+Pulling data from Hobonet. 
+
+It should be triggered periodically. 
+
+**Java Entry Point**: `entrypoints.HoboRegHandler::handleRequest`
+
+**API Gatway EndPoints:** N/A
+
+**Request Format**:
+
+
+```json
+{
+}
+```
+
+**Response Format**
+
+
+Success Response: HTTP-200(OK)
+
+Failure Response:
+
+All failed response will contain error message in `body.message`.
+
+HTTP-500(INTERNAL SERVER ERROR) If the function does not work as expected.
+
+
+```json
+{
+  "body": {
+    "message": "OK"
+  },
+  "headers": {
+    "X-Custom-Header": "application/json",
+    "Content-Type": "application/json"
+  },
+  "statusCode": 200
+}
+```
+
+-----
+### HoboPullDataHandler
+
+**Java Entry Point**: `entrypoints.HoboPullDataHandler::handleRequest`
+
+Get Hobo data from database.
+
+Requested through a time-span in [Unix Epoch](https://en.wikipedia.org/wiki/Unix_time) format.
+
+Returned objects consistent of one filed, 
+
+`Hobo info:` is the key to a list(`List<Map<String, Object>>`) of hobo data.
+
+**API Gatway EndPoints:** `https://mt7pf3aohi.execute-api.us-east-2.amazonaws.com/test/pull-data`
+
+**Request Format**:
+```json
+{
+  "StartTime": <String>,
+  "EndTime": <String>
+}
+```
+`StartTime`: A string contains Start time of time span in  [Unix Epoch](https://en.wikipedia.org/wiki/Unix_time) format. 
+
+`EndTime`: A string contains Start time of time span in  [Unix Epoch](https://en.wikipedia.org/wiki/Unix_time) format.
+**Response Format**
+
+Success Response: HTTP-200(OK)
+
+Failure Response:
+
+All failed response will contain error message in `body.message`.
+
+HTTP-400(BAD REQUEST) If request is not in correct format.
+
+HTTP-404(NOT FOUND) If no data is found within the timestamp period.
+
+HTTP-500(INTERNAL SERVER ERROR) If the function does not work as expected.
+
+
+```json
+{
+  "body": {
+    "Hobo info": {
+                     "Epochtime": 1576475402,
+                     "HoboID": "454-788",
+                     "Humidity": 7,
+                     "LeafWetness": 9,
+                     "Rainfall": 83,
+                     "SoilMoisture": 43,
+                     "SolarRadiation": 323413,
+                     "Temperature": 92,
+                     "Wind": 6
+                   }
+  },
+  "headers": {
+    "X-Custom-Header": "application/json",
+    "Content-Type": "application/json"
+  },
+  "statusCode": 200
+}
+```
+
