@@ -22,23 +22,27 @@ public class GatewayResponse
     private final Map<String, String> headers;
     private final int statusCode;
 
-    public GatewayResponse(final Map<String, Object> body, final Map<String, String> headers, final int statusCode)
+    public GatewayResponse(final Map<String, Object> body, final Map<String, String> headers, final int statusCode) throws Exception
     {
         this.statusCode = statusCode;
         Map<String, Object> bodycurr=body;
         switch (statusCode)
         {
             case HttpStatus.SC_UNAUTHORIZED:
-                bodycurr.put("message","UNAUTHORIZED:"+bodycurr.get("message"));
+                String errorMessage = statusCode + " UNAUTHORIZED: " + bodycurr.get("message");
+                throw new Exception(errorMessage);
                 break;
             case HttpStatus.SC_BAD_REQUEST:
-                bodycurr.put("message","BAD REQUEST:"+bodycurr.get("message"));
+                String errorMessage = statusCode + " BAD REQUEST: " + bodycurr.get("message");
+                throw new Exception(errorMessage);
                 break;
             case HttpStatus.SC_INTERNAL_SERVER_ERROR:
-                bodycurr.put("message","INTERNAL SERVER ERROR:"+bodycurr.get("message"));
+                String errorMessage = statusCode + " INTERNAL SERVER ERROR: " + bodycurr.get("message");
+                throw new Exception(errorMessage);
                 break;
             case HttpStatus.SC_NOT_FOUND:
-                bodycurr.put("message","NOT FOUND:"+bodycurr.get("message"));
+                String errorMessage = statusCode + " NOT FOUND: " + bodycurr.get("message");
+                throw new Exception(errorMessage);
                 break;
             default:
         }
