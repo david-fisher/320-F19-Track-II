@@ -53,7 +53,6 @@ export default function Register() {
         <FormGroup controlId="email">
           <FormLabel>Email</FormLabel>
           <FormControl
-            autoFocus
             type="email"
             value={email}
             onChange={e => setEmail(e.target.value)}
