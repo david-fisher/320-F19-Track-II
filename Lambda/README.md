@@ -100,7 +100,7 @@ HTTP-500(INTERNAL SERVER ERROR) If the function does not work as expected.
 ### UserLoginHandler
 **Java Entry Point**: `entrypoints.UserLoginHandler::handleRequest`
 
-Used for web front end. Will return a token (works like cookies) when succeed.
+Used for web front end. Will return user info without password and a token (works like cookies) when succeed.
 
 `body.token` will then be used as credentials when required.
 
@@ -124,11 +124,13 @@ Success Response: HTTP-200(OK)
 
 `body.token`: The token that valid for 24 hours as a credentials.
 
+`body.userinfo`: The user info.
+
 Example:
 ```json
 {
   "body": {
-    "user info:": {
+    "userinfo": {
       "Role": "PUBLIC",
       "LName": "LName",
       "EMail": "email2@test.com",
