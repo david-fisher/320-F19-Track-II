@@ -7,4 +7,9 @@
       margin: 0 auto;
       max-width: 320px;
     }
+
+    .Register {
+      margin: auto;
+      max-width: 10%;
+    }
   }

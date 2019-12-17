@@ -10,6 +10,7 @@ import Observations from "../../pages/Observations/Observations";
 import AI from "../../pages/AI/AI";
 import Data from "../../pages/Data/Data";
 import Orchards from "../../pages/Orchards/Orchards";
+import Register from "../../pages/Register/Register";
 
 import NotFound from "../../pages/NotFound/NotFound";
 import UnauthenticatedRoute from "./UnauthenticatedRoute";
@@ -29,6 +30,7 @@ export default function Routes() {
       <Route path="/observations" exact component={Observations} />
       <Route path="/data" exact component={Data} />
       <Route path="/orchards" exact component={Orchards} />
+      <Route path="/register" exact component={Register} />
       <Route component={NotFound} />
     </Switch>
   );

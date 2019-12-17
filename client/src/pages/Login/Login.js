@@ -54,29 +54,36 @@ export default function Login() {
   }
 
   return (
-    <div className="Login">
-      <form onSubmit={handleSubmit}>
-        <FormGroup controlId="email">
-          <FormLabel>Email</FormLabel>
-          <FormControl
-            autoFocus
-            type="email"
-            value={email}
-            onChange={e => setEmail(e.target.value)}
-          />
-        </FormGroup>
-        <FormGroup controlId="password">
-          <FormLabel>Password</FormLabel>
-          <FormControl
-            value={password}
-            onChange={e => setPassword(e.target.value)}
-            type="password"
-          />
-        </FormGroup>
-        <Button block disabled={!validateForm()} type="submit">
-          Login
+    <div>
+      <div className="Login">
+        <form onSubmit={handleSubmit}>
+          <FormGroup controlId="email">
+            <FormLabel>Email</FormLabel>
+            <FormControl
+              autoFocus
+              type="email"
+              value={email}
+              onChange={e => setEmail(e.target.value)}
+            />
+          </FormGroup>
+          <FormGroup controlId="password">
+            <FormLabel>Password</FormLabel>
+            <FormControl
+              value={password}
+              onChange={e => setPassword(e.target.value)}
+              type="password"
+            />
+          </FormGroup>
+          <Button block disabled={!validateForm()} type="submit">
+            Login
+          </Button>
+        </form>
+      </div>
+      <div className="Register">
+        <Button href="/register">
+          Create an account
         </Button>
-      </form>
+      </div>
     </div>
   );
 }
