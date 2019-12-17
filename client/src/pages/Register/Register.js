@@ -29,7 +29,10 @@ export default function Register() {
   }
 
   return (
-    <div className="Register">
+    <Row>
+      
+      <Col md={{ span: 6, offset:3 }}>
+    <div className="" style={{marginTop: '60px'}}>
       <form onSubmit={handleSubmit}>
         <Row>
           <FormGroup as={Col} controlId="firstName">
@@ -83,6 +86,9 @@ export default function Register() {
         </Button>
       </form>
     </div>
+    </Col>
+    
+    </Row>
   );
 }
 
