@@ -126,17 +126,7 @@ Success Response: HTTP-200(OK)
 
 Example:
 ```json
-{
-  "body": {
-    "message": "OK",
-    "token": "YBpn61KXOI5mbZUIElY5CT24ZIVflWU1DhD6ExCwcvk="
-  },
-  "headers": {
-    "X-Custom-Header": "application/json",
-    "Content-Type": "application/json"
-  },
-  "statusCode": 200
-}
+{"body":{"user info:":{"Role":"PUBLIC","LName":"LName","EMail":"email2@test.com","FName":"FName"},"message":"OK","token":"VoVsgAcbWNsUlwCgxtXHtDTOr6p0vSP/tjho+699C8Q="},"headers":{"X-Custom-Header":"application/json","Content-Type":"application/json"},"statusCode":200}
 ```
 
 
@@ -154,7 +144,7 @@ Example
 ```json
 {
   "body": {
-    "message": "Email and Password do not match."
+    "message": "UNAUTHORIZED:Email and Password do not match."
   },
   "headers": {
     "X-Custom-Header": "application/json",
@@ -227,7 +217,7 @@ Example
 ```json
 {
   "body": {
-    "message": "Cannot find user with such key!"
+    "message": "UNAUTHORIZED:Cannot find user with such key!"
   },
   "headers": {
     "X-Custom-Header": "application/json",
@@ -310,7 +300,7 @@ Example
 ```json
 {
   "body": {
-    "message": "Token/MobileKey incorrect!"
+    "message": "UNAUTHORIZED:Token/MobileKey incorrect!"
   },
   "headers": {
     "X-Custom-Header": "application/json",
@@ -402,7 +392,7 @@ Example
 ```json
 {
   "body": {
-    "message": "Missing necessary attribute 'startTime'!"
+    "message": "BAD REQUEST:Missing necessary attribute 'startTime'!"
   },
   "headers": {
     "X-Custom-Header": "application/json",
