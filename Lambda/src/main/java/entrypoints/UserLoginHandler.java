@@ -57,7 +57,7 @@ public class UserLoginHandler extends AbstractHandler
         }
         body.put("message", "OK");
         body.put("token", TokenHelper.getToken(request.getEmail()));
-        body.put("user info:", db.getUserInfo(request.getEmail()));
+        body.put("userinfo", db.getUserInfo(request.getEmail()));
         return new GatewayResponse(body, headers, HttpStatus.SC_OK);
     }
 }
