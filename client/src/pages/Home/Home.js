@@ -1,23 +1,28 @@
 import React from "react";
 import { Jumbotron, Container } from "react-bootstrap";
+import GoogleMapReact from 'google-map-react'
 
-import {
-  withScriptjs,
-  withGoogleMap,
-  GoogleMap,
-  Marker,
-} from "react-google-maps";
 
-const MapWithAMarker = withScriptjs(withGoogleMap(props =>
-  <GoogleMap
-    defaultZoom={8}
-    defaultCenter={{ lat: -34.397, lng: 150.644 }}
-  >
-    <Marker
-      position={{ lat: -34.397, lng: 150.644 }}
-    />
-  </GoogleMap>
-));
+const center =  {
+  center: {
+    lat: 59.95,
+    lng: 30.33
+  },
+  zoom: 11
+}
+const heatmapPoints =  [
+  {lat: 59.95, lng: 30.33},
+  {lat: 59.96, lng: 30.32}
+]
+const apiKey = {key: ''} //my guess is we will not have a paid api key by demo time
+const heatMapData = {
+  positions: heatmapPoints,
+  options: {
+    radius: 20,
+    opacity: 0.6
+  }
+}
+
 
 export default function Home() {
   return (
@@ -29,12 +34,24 @@ export default function Home() {
         </Container>
       </Jumbotron>
       <Container>
-      <MapWithAMarker
+      <div style={{ height: '100vh', width: '100%' }}>
+      <GoogleMapReact
+          // ref={(el) => this._googleMap = el}
+          bootstrapURLKeys={apiKey}
+          defaultCenter={center.center}
+          defaultZoom={center.zoom}
+          heatmapLibrary={true}
+          heatmap={heatMapData}
+        >
+        </GoogleMapReact>
+
+      {/* <MapWithAMarker
         googleMapURL="https://maps.googleapis.com/maps/api/js?key=&v=3.exp&libraries=geometry,drawing,places"
         loadingElement={<div style={{ height: `100%` }} />}
         containerElement={<div style={{ height: `400px` }} />}
         mapElement={<div style={{ height: `100%` }} />}
-      />
+      /> */}
+      </div>
       </Container>
       <Container>
         <p className="lead">
