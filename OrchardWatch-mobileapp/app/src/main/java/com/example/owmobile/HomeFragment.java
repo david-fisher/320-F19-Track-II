@@ -22,7 +22,7 @@ public class HomeFragment extends Fragment {
         webView = view.findViewById(R.id.webView);
         webView.setWebViewClient(new WebViewClient());
         webView.getSettings().setJavaScriptEnabled(true);
-        webView.loadUrl("https://coldspringorchard.com/");
+        webView.loadUrl("http://d3gvvf4yx7ay63.cloudfront.net/");
 
         return view;
     }
