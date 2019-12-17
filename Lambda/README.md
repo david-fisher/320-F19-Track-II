@@ -27,7 +27,7 @@ Click [here](https://github.com/david-fisher/320-F19-Track-II/wiki/Team-4:-The-F
 5. Returned Object is parsed by AWS API Gateway and send back to front end.
 
 ## API Document
-Author(s): [@charlescao460](https://github.com/charlescao460)
+Author(s): [@charlescao460](https://github.com/charlescao460),[@lwbhahahaha](https://github.com/lwbhahahaha)
 
 **Since AWS Lambda has no directly exposed endpoints, all hanlders need to be configured accordingly in API Gateway.**
 
