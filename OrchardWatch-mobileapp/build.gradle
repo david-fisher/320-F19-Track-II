@@ -4,7 +4,10 @@ buildscript {
     repositories {
         google()
         jcenter()
-        
+        // To build Unirest
+        //maven{
+        //    url 'https://raw.github.com/zeeshanejaz/unirest-android/mvn-repo'
+        //}
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:3.5.1'
@@ -18,7 +21,9 @@ allprojects {
     repositories {
         google()
         jcenter()
-        
+        //maven{
+        //    url 'https://raw.github.com/zeeshanejaz/unirest-android/mvn-repo'
+        //}
     }
 }
 
