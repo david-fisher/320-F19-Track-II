@@ -13,17 +13,22 @@ import androidx.fragment.app.Fragment;
 
 public class HomeFragment extends Fragment {
     private WebView webView;
+    private WebViewClient wvc = new WebViewClient();
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_home, container, false);
-        
+        super.onCreateView(inflater, container, savedInstanceState);
+        return inflater.inflate(R.layout.fragment_home, container, false);
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
         webView = view.findViewById(R.id.webView);
-        webView.setWebViewClient(new WebViewClient());
+        webView.setWebViewClient(wvc);
         webView.getSettings().setJavaScriptEnabled(true);
         webView.loadUrl("http://d3gvvf4yx7ay63.cloudfront.net/");
-
-        return view;
     }
 }

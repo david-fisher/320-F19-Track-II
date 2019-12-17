@@ -6,11 +6,11 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.os.Bundle;
 import android.net.Uri;
-import android.provider.MediaStore;
 import android.os.Build;
+import android.os.Bundle;
 import android.os.Environment;
+import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,42 +19,38 @@ import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
 import androidx.core.content.FileProvider;
+import androidx.fragment.app.Fragment;
 
-import java.io.InputStream;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class PhotoUploadNew extends Fragment {
+    static final int REQUEST_TAKE_PHOTO = 1;
+    static final int REQUEST_CHOOSE_PHOTO = 2;
+    private static final int TAKE_NEW = 1;
+    private static final int FROM_GALLERY = 2;
+    private static final int REQUEST_READ_EXTERNAL_STORAGE = 3;
     //Making the variables for later use
     Button takePhoto;
     Button takeGallery;
     Button upload;
-
     ImageView photo;
     String filePath;
-
-    static final int REQUEST_TAKE_PHOTO = 1;
-    static final int REQUEST_CHOOSE_PHOTO = 2;
-
-    private static final int TAKE_NEW = 1;
-    private static final int FROM_GALLERY = 2;
-    private static final int REQUEST_READ_EXTERNAL_STORAGE = 3;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        //chosenImage = getView().findViewById(R.id.chosenImage);
-        // Inflate the layout for this fragment
+        super.onCreateView(inflater, container, savedInstanceState);
         return inflater.inflate(R.layout.fragment_photo_upload_new, container, false);
 
     }
 
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+        super.onViewCreated(view, savedInstanceState);
 
         //Initializing the on-screen components
         takePhoto = this.getView().findViewById(R.id.takePhotoButton);

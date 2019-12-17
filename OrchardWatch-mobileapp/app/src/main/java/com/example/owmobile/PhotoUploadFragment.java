@@ -22,21 +22,24 @@ public class PhotoUploadFragment extends Fragment {
     ViewPager viewPager;
     TabLayout tabLayout;
 
+    Fragment[] fragments = {new PhotoUploadNew(), new PhotoUploadPrevious()};
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        super.onCreateView(inflater, container, savedInstanceState);
         return inflater.inflate(R.layout.fragment_photo_upload, container, false);
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
         photoPagerAdapter = new PhotoPagerAdapter(getChildFragmentManager());
         viewPager = view.findViewById(R.id.pager);
         viewPager.setAdapter(photoPagerAdapter);
 
         tabLayout = view.findViewById(R.id.tab_layout);
         tabLayout.setupWithViewPager(viewPager);
-
     }
 
     public class PhotoPagerAdapter extends FragmentStatePagerAdapter {
@@ -51,23 +54,20 @@ public class PhotoUploadFragment extends Fragment {
 
         @Override
         public Fragment getItem(int position) {
-            System.out.println(tabLayout.getSelectedTabPosition());
-            switch (position) {
-                case 1:
-                    return new PhotoUploadPrevious();
-                default:
-                    return new PhotoUploadNew();
+            if (position == 1) {
+                return fragments[1];
             }
+
+            return fragments[0];
         }
 
         @Override
         public CharSequence getPageTitle(int position) {
-            switch (position) {
-                case 1:
-                    return "Previously Uploaded";
-                default:
-                    return "Upload New Photo";
+            if (position == 1) {
+                return "Previously Uploaded";
             }
+
+            return "Upload New Photo";
         }
     }
 }
