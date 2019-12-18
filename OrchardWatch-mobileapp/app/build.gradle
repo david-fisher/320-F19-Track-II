@@ -5,7 +5,7 @@ android {
     buildToolsVersion "29.0.2"
     defaultConfig {
         applicationId "com.example.owmobile"
-        minSdkVersion 15
+        minSdkVersion 24
         targetSdkVersion 28
         versionCode 1
         versionName "1.0"
@@ -29,6 +29,8 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1'
     implementation 'com.google.android.material:material:1.0.0'
-    //implementation 'com.mashape.unirest:unirest-android:1.0+'
+    //implementation 'com.konghq.unirest:unirest-java:3.3.00'
     implementation files('src/libs/unirest-java-3.3.00-standalone.jar')
+    //implementation 'com.squareup.retrofit2:retrofit:2.6.3'
+    //implementation 'com.squareup.retrofit2:converter-gson:2.6.3'
 }
