@@ -96,6 +96,7 @@ pull_data | entrypoints.HoboPullDataHandler::handleRequest
 1. Download and install Android Studio: https://developer.android.com/studio
 2. Clone repo from Git
 3. Run app: Start by opening Android Studio
+ - Select the OrchardWatch-mobileapp folder as the root project folder in Android Studio.
  a. With an emulator: 
   i. Click on list of available devices
   ii. If no emulators are set up, set up emulator:
