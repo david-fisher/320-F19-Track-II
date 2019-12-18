@@ -23,7 +23,7 @@ public class MobileVerificationHandler extends AbstractHandler
 {
 
     @Override
-    public GatewayResponse handleRequest(HashMap<String, String> input, Context context)
+    public GatewayResponse handleRequest(HashMap<String, String> input, Context context) throws Exception
     {
         Map<String, String> headers = new HashMap<>();
         headers.put("Content-Type", "application/json");
