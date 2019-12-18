@@ -14,7 +14,9 @@
   width: max-width;
 }
 
-table, td, th {
+table,
+td,
+th {
   border: 1px solid #ddd;
   text-align: left;
 }
@@ -24,6 +26,7 @@ table {
   width: 100%;
 }
 
-th, td {
+th,
+td {
   padding: 15px;
 }

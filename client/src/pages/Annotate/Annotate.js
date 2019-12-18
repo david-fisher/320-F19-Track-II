@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { TwoDimensionalImage } from "react-annotation-tool";
-import { Container } from "react-bootstrap";
+import { Container, Button, Row, Col } from "react-bootstrap";
 import "./Annotate.css";
 
 export default function Annotate() {
@@ -33,8 +33,11 @@ export default function Annotate() {
     );
   }
 
+  function openFileExplorer() {
+    document.getElementById("fileInput").click();
+  }
+
   function handlePrevious() {
-    console.log(defaultAnnotation);
     setDefaultAnnotation({});
     setUrl(
       "https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Holding_Apple_with_scab.jpg/1280px-Holding_Apple_with_scab.jpg"
@@ -57,6 +60,19 @@ export default function Annotate() {
         onNextClick={handleNext}
         onPreviousClick={handlePrevious}
       />
+      <Container>
+        <Row>
+          <Col>
+            <Button block>Submit Annotation</Button>
+          </Col>
+          <Col>
+            <Button block onClick={openFileExplorer}>
+              Upload New Image
+            </Button>
+            <input className="hiddenFile" id="fileInput" type="file" />
+          </Col>
+        </Row>
+      </Container>
     </div>
   );
 }
