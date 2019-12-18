@@ -1,9 +1,9 @@
-import React, { Component } from 'react'
+import React, { Component } from "react"
 import {Container} from "react-bootstrap";
-import ReactSearchBox from 'react-search-box'
+import ReactSearchBox from "react-search-box"
 import { Nav, Navbar, Dropdown, NavItem } from "react-bootstrap";
-
-import { VictoryLine, VictoryChart, VictoryLabel, VictoryAxis } from 'victory';
+import { VictoryLine, VictoryChart, VictoryLabel, VictoryAxis } from "victory";
+import "./Data.css";
 
 const data = [
         {
@@ -20,7 +20,7 @@ const data = [
         {
           "Epochtime": 1576475403,
           "HoboID": "454-788",
-          "Humidity": 7,
+          "Humidity": 8,
           "LeafWetness": 9,
           "Rainfall": 83,
           "SoilMoisture": 43,
@@ -51,7 +51,7 @@ const data = [
           "Wind": 6
         },
         {
-          "Epochtime": 1576475402,
+          "Epochtime": 1576475406,
           "HoboID": "454-789",
           "Humidity": 1,
           "LeafWetness": 9,
@@ -62,15 +62,15 @@ const data = [
           "Wind": 4
         },
         {
-          "Epochtime": 1576475403,
+          "Epochtime": 1576475406,
           "HoboID": "454-789",
-          "Humidity": 3,
+          "Humidity": 1,
           "LeafWetness": 9,
-          "Rainfall": 73,
-          "SoilMoisture": 73,
-          "SolarRadiation": 327444,
-          "Temperature": 12,
-          "Wind": 5
+          "Rainfall": 83,
+          "SoilMoisture": 43,
+          "SolarRadiation": 343413,
+          "Temperature": 92,
+          "Wind": 4
         },
         {
           "Epochtime": 1576475404,
@@ -206,7 +206,7 @@ function Graph(props) {
       x="Epochtime"
       y={props.y.y}
     />
-    <VictoryAxis tickFormat={() => ''} />
+    <VictoryAxis tickFormat={() => ""} />
     <VictoryAxis dependentAxis />
   </VictoryChart>)
   return(page)
