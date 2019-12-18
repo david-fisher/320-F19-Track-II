@@ -1,11 +1,5 @@
 import React, { useState } from "react";
-import {
-  Button,
-  FormGroup,
-  FormControl,
-  FormLabel,
-  Row
-} from "react-bootstrap";
+import { Button, FormGroup, FormControl, FormLabel } from "react-bootstrap";
 import "./Login.css";
 import Cookies from "universal-cookie";
 import LoginModal from "../../components/LoginModal/LoginModal";
@@ -22,59 +16,55 @@ export default function Login() {
   function handleSubmit(event) {
     event.preventDefault();
 
-    if (password !== "password") {
-      alert("Invalid password");
-    } else {
-      fetch(
-        "https://mt7pf3aohi.execute-api.us-east-2.amazonaws.com/test/user-login",
-        {
-          method: "POST",
-          headers: {
-            Accept: "application/json",
-            "Content-Type": "application/json"
-          },
-          body: JSON.stringify({
-            Email: "test@test.com",
-            Password: "password"
-          })
+    fetch(
+      "https://mt7pf3aohi.execute-api.us-east-2.amazonaws.com/test/user-login",
+      {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          Email: email,
+          Password: password
+        })
+      }
+    )
+      .then(response => {
+        if (response.status >= 200 && response.status < 300) {
+          return response.json();
+        } else {
+          throw new Error("Server can't be reached!");
         }
-      )
-        .then(response => {
-          if (response.status >= 200 && response.status < 300) {
-            return response.json();
-          } else {
-            throw new Error("Server can't be reached!");
-          }
-        })
-        .then(json => {
-          console.log("hooray! we have json!");
-          console.log(json);
-          const cookies = new Cookies();
-          cookies.remove("email");
-          cookies.remove("firstName");
-          cookies.remove("lastName");
-          cookies.remove("role");
-          cookies.remove("token");
-          cookies.set("email", json["body"]["userinfo"]["EMail"], {
-            path: "/"
-          });
-          cookies.set("firstName", json["body"]["userinfo"]["FName"], {
-            path: "/"
-          });
-          cookies.set("lastName", json["body"]["userinfo"]["LName"], {
-            path: "/"
-          });
-          cookies.set("role", json["body"]["userinfo"]["Role"], { path: "/" });
-          cookies.set("token", json["body"]["token"], { path: "/" });
-        })
-        .then(() => {
-          setModalShow(true);
-        })
-        .catch(error => {
-          alert("Invalid credentials");
-          console.log(error);
+      })
+      .then(json => {
+        console.log("hooray! we have json!");
+        console.log(json);
+        const cookies = new Cookies();
+        cookies.remove("email");
+        cookies.remove("firstName");
+        cookies.remove("lastName");
+        cookies.remove("role");
+        cookies.remove("token");
+        cookies.set("email", json["body"]["userinfo"]["EMail"], {
+          path: "/"
         });
-    }
+        cookies.set("firstName", json["body"]["userinfo"]["FName"], {
+          path: "/"
+        });
+        cookies.set("lastName", json["body"]["userinfo"]["LName"], {
+          path: "/"
+        });
+        cookies.set("role", json["body"]["userinfo"]["Role"], { path: "/" });
+        cookies.set("token", json["body"]["token"], { path: "/" });
+      })
+      .then(() => {
+        setModalShow(true);
+      })
+      .catch(error => {
+        alert("Invalid credentials");
+        console.log(error);
+      });
   }
 
   return (
