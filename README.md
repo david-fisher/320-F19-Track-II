@@ -71,6 +71,7 @@ The output .jar file is located at .../Lambda/target/lambda-1.0-SNAPSHOT.jar
 6. In the “Function code” section for each lambda, upload the lambda-1.0-SNAPSHOT.jar acquired earlier (all functions use the same jar).
 
 ![](readmeimages/Screenshot_3.png)
+
 7. Also in the function code section, specify the handlers for each lambda function accordingly:
 
 Function | Handler
