@@ -1,7 +1,7 @@
 import React from "react";
 import Cookies from "universal-cookie";
 import {Container, Card, Button, Col,Row} from "react-bootstrap";
-import "./Profile.css";
+//import "./Profile.css";
 
 export default function Profile() {
     const cookies = new Cookies();
