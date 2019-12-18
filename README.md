@@ -65,6 +65,7 @@ README for Track II
 ![](readmeimages/Screenshot_1.png)
 
 ![](readmeimages/Screenshot_2.png)
+
 The output .jar file is located at .../Lambda/target/lambda-1.0-SNAPSHOT.jar
 4. Login to AWS with an account that has permission to add/edit lambdas
 5. Create the following lambda functions: register_user, get_s3_key, get_image, mobile_vertification, user_login, image_upload, hobo_data_pull, and pull_data
