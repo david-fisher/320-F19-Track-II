@@ -7,22 +7,21 @@
   margin-right: auto;
   width: 100%;
 }
-.header{
+.header {
   margin-top: 20px;
 }
-.footer{
-  height:10%;
-  width:100%;
+.footer {
+  height: 10%;
+  width: 100%;
   font-size: 30px;
-  color:white;
+  color: white;
   padding-top: 10px;
   text-indent: 50px;
 }
-.left-margin{
+.left-margin {
   margin-left: 10px;
 }
-.timeline{
-  border-top:solid;
+.timeline {
+  border-top: solid;
   border-color: rgb(0, 128, 58);
-  
 }
