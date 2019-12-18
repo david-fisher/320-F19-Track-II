@@ -23,7 +23,6 @@
 }
 .timeline{
   border-top:solid;
-  border-color: blue;
-  border-bottom:solid;
-  border-color: blue;
+  border-color: rgb(0, 128, 58);
+  
 }

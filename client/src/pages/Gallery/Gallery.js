@@ -3,7 +3,7 @@ import Gallery from 'react-grid-gallery';
 import "./Gallery.css";
 import {Container, Button} from "react-bootstrap";
 
-let imgs = getImageList();/*
+/*let imgs = getImageList();
 [
   {
           src: "https://c2.staticflickr.com/9/8356/28897120681_3b2c0f43e0_b.jpg",
@@ -43,6 +43,7 @@ let imgs = getImageList();/*
     caption: "Boats (Jeshu John - designerspics.com)"
   }
 ]*/
+/*
 function getImageList(){
   fetch(
     "https://mt7pf3aohi.execute-api.us-east-2.amazonaws.com/test/get-image",
@@ -59,22 +60,25 @@ function getImageList(){
     }
   )
   .then(response => {
-    /*if (response.status >= 200 && response.status < 300) {
+    if (response.status >= 200 && response.status < 300) {
       return response.json();
     } else {
       throw new Error("Server can't be reached!");
-    }*/
+    }
 
     return response.body.images;
 
-  });/*
+  });
+
+ 
   .then(json => {
     window.location.reload();
   })
   .catch(error => {
     alert("Invalid credentials");
-  });*/
+  });
 }
+*/
 /*
   function handleSubmit(event) {
     event.preventDefault();
@@ -118,7 +122,7 @@ function getImageList(){
     }
   }
 */
-
+/*
 function onSelectImage (index, image) {
   let images = this.state.images.slice();
   let img = images[index];
@@ -161,9 +165,10 @@ function deleteSelected(){
 function getImages(){
   return imgs;
 }
-
+*/
 export default function Galler() {
   return (
+    /*
     <div>
       <Container className="Title">
         <h1>Gallery</h1>
@@ -175,6 +180,9 @@ export default function Galler() {
         </Button>
         <Gallery images={getImages()} onSelectImage = {onSelectImage} />
       </Container>
+    </div>
+    */
+    <div>
     </div>
   );
 }
