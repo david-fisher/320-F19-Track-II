@@ -26,22 +26,23 @@ public class GatewayResponse
     {
         this.statusCode = statusCode;
         Map<String, Object> bodycurr=body;
+        String errorMessage=null;
         switch (statusCode)
         {
             case HttpStatus.SC_UNAUTHORIZED:
-                String errorMessage = statusCode + " UNAUTHORIZED: " + bodycurr.get("message");
+                errorMessage = statusCode + " UNAUTHORIZED: " + bodycurr.get("message");
                 throw new Exception(errorMessage);
                 break;
             case HttpStatus.SC_BAD_REQUEST:
-                String errorMessage = statusCode + " BAD REQUEST: " + bodycurr.get("message");
+                errorMessage = statusCode + " BAD REQUEST: " + bodycurr.get("message");
                 throw new Exception(errorMessage);
                 break;
             case HttpStatus.SC_INTERNAL_SERVER_ERROR:
-                String errorMessage = statusCode + " INTERNAL SERVER ERROR: " + bodycurr.get("message");
+                errorMessage = statusCode + " INTERNAL SERVER ERROR: " + bodycurr.get("message");
                 throw new Exception(errorMessage);
                 break;
             case HttpStatus.SC_NOT_FOUND:
-                String errorMessage = statusCode + " NOT FOUND: " + bodycurr.get("message");
+                errorMessage = statusCode + " NOT FOUND: " + bodycurr.get("message");
                 throw new Exception(errorMessage);
                 break;
             default:
