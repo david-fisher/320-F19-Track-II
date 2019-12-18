@@ -1,3 +1,11 @@
 .Title {
   padding: 1rem;
 }
+
+.hiddenFile{
+  display: none;
+}
+
+.imageButtons{
+  margin: 10px;
+}
