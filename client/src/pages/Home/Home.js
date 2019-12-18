@@ -50,8 +50,8 @@ export default function Home() {
       <div className="jumb">
         <Container class="container">
           <Jumbotron>
-            <h1>Welcome to OrchardWatch!</h1>
-            <p>We watch the Orchards and do cool data stuff.</p>
+            <h1>Welcome to Orchard Watch!</h1>
+            <p>For the future of farming</p>
           </Jumbotron>
         </Container>
       </div>
@@ -87,17 +87,14 @@ export default function Home() {
       <Container className="textPadding">
         <h1 className="header">How to Use</h1>
         <p className="lead paragraph">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras pulvinar
-          pharetra felis, id faucibus magna. Donec iaculis sagittis leo, at
-          dictum metus volutpat eget. Praesent iaculis sit amet mauris ut
-          euismod. Aliquam pulvinar consequat facilisis. Cras quis laoreet leo.
-          Cras porttitor iaculis posuere. Maecenas pulvinar, risus non eleifend
-          congue, mauris urna euismod nibh, at venenatis dolor diam id lectus.
-          Ut ut congue mauris. Sed rhoncus commodo velit, a consectetur metus.
-          Morbi justo tortor, aliquet non mi nec, tincidunt condimentum augue.
-          Suspendisse elementum feugiat scelerisque. Integer cursus eros in eros
-          facilisis, id pharetra eros ultrices. Donec aliquet risus eu aliquam
-          elementum.
+          You can use the heatmap above to visual the data we collect and analyze 
+          here at Orchard Watch. You can zoom in and scroll around to look 
+          closely at where our sensors are placed within the orchard. To change 
+          which type of data is being displayed, use the drop down menu above the 
+          map. Our sensors collect data on temperature, humidity, solar radiation, 
+          soil moisture, leaf wetness, rainfall, and wind speed. Areas with high 
+          values or intensity red or orange, with values decreasing as the colors 
+          change to yellow, green, and eventually to a clear overlay.
         </p>
       </Container>
     </div>
