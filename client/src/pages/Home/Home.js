@@ -100,7 +100,7 @@ const center = {
     lat: 42.254009,
     lng: -72.360191
   },
-  zoom: 15
+  zoom: 16
 };
 
 const apiKey = { key: "" }; //my guess is we will not have a paid api key by demo time
@@ -115,7 +115,7 @@ class Map extends React.Component {
           { lat: 42.253517, lng: -72.35880, weight: 1 }
         ],
         options: {
-          radius: 50,
+          radius: 80,
           opacity: 0.5
         }
       }
