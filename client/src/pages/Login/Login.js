@@ -1,5 +1,11 @@
 import React, { useState } from "react";
-import { Button, FormGroup, FormControl, FormLabel } from "react-bootstrap";
+import {
+  Button,
+  FormGroup,
+  FormControl,
+  FormLabel,
+  Row
+} from "react-bootstrap";
 import "./Login.css";
 import Cookies from "universal-cookie";
 
@@ -74,13 +80,17 @@ export default function Login() {
               type="password"
             />
           </FormGroup>
-          <Button block disabled={!validateForm()} type="submit">
-            Login
-          </Button>
+          <FormGroup>
+            <Button block disabled={!validateForm()} type="submit">
+              Login
+            </Button>
+          </FormGroup>
+          <FormGroup>
+            <Button block href="/register">
+              Create an account
+            </Button>
+          </FormGroup>
         </form>
-      </div>
-      <div className="Register">
-        <Button href="/register">Create an account</Button>
       </div>
     </div>
   );
