@@ -47,13 +47,13 @@ function datasetTwo() {
 export default function Home() {
   return (
     <div>
-      <div className = "jumb">
-        <Container class = "container">
+      <div className="jumb">
+        <Container class="container">
           <h1>Welcome to OrchardWatch!</h1>
           <p>We watch the Orchards and do cool data stuff.</p>
         </Container>
       </div>
-      
+
       <Container>
         <h1>Interactive Heatmap</h1>
         <div style={{ height: "50vh", width: "100%" }}>
