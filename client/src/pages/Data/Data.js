@@ -181,6 +181,7 @@ class Select extends React.Component {
         <option value="454-788"> 454-788 </option>
         <option value="454-789"> 454-789 </option>
       </select>
+      {this.table(this.state)}
       <select  onChange={this.handleSelect}>
         <option value="Humidity"> Humidity </option>
         <option value="LeafWetness"> LeafWetness </option>
@@ -191,7 +192,6 @@ class Select extends React.Component {
         <option value="Wind"> Wind </option>
       </select>
       <Graph y={this.state}/>
-      {this.table(this.state)}
       </div>
     )
   }
