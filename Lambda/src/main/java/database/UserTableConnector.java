@@ -213,8 +213,7 @@ public class UserTableConnector extends DatabaseConnector
         if (!itr.hasNext()) {
             return false;
         }
-        Map<String, Object> item = itr.next().asMap();
-        item.remove("Password");
+        Map<String, Object> item = itr.next().asMap().remove("Password");
         return item;
     }
 }
