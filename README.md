@@ -67,8 +67,11 @@ README for Track II
 ![](readmeimages/Screenshot_2.png)
 
 The output .jar file is located at .../Lambda/target/lambda-1.0-SNAPSHOT.jar
+
 4. Login to AWS with an account that has permission to add/edit lambdas
+
 5. Create the following lambda functions: register_user, get_s3_key, get_image, mobile_vertification, user_login, image_upload, hobo_data_pull, and pull_data
+
 6. In the “Function code” section for each lambda, upload the lambda-1.0-SNAPSHOT.jar acquired earlier (all functions use the same jar).
 
 ![](readmeimages/Screenshot_3.png)
@@ -84,9 +87,9 @@ mobile_vertification | entrypoints.UserRegistrationHandler::handleRequest
 user_login | entrypoints.ImageUploadHandler::handleRequest
 image_upload | entrypoints.ImageUploadHandler::handleRequest
 hobo_data_pull | entrypoints.HoboRegHandler::handleRequest
-pull_data | pull_data
+pull_data | entrypoints.HoboPullDataHandler::handleRequest
 
-8. Ensure endpoints from API gateway have been properly mapped to the lambda functions.
+8. Ensure endpoints from API gateway have been properly mapped to the lambda functions. All path names for entrypoints are https://[identifier numbers].execute-api.us-east-2.amazonaws.com/test/[lambda function name]
 
 
 **Mobile Set Up:**
