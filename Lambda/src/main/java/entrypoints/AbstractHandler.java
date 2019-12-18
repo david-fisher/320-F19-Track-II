@@ -16,6 +16,6 @@ import java.util.HashMap;
 public abstract class AbstractHandler implements RequestHandler<HashMap<String, String>, GatewayResponse>
 {
     @Override
-    abstract public GatewayResponse handleRequest(HashMap<String, String> input, Context context) throws Exception;
+    abstract public GatewayResponse handleRequest(HashMap<String, String> input, Context context);
 
 }

@@ -19,7 +19,7 @@ import java.util.Map;
 public class HoboPullDataHandler extends AbstractHandler {
 
     @Override
-    public GatewayResponse handleRequest(HashMap<String, String> input, Context context) throws Exception
+    public GatewayResponse handleRequest(HashMap<String, String> input, Context context)
     {
         Map<String, String> headers = new HashMap<>();
         headers.put("Content-Type", "application/json");

@@ -9,6 +9,8 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
+import exceptions.HttpHandlerException;
+
 /**
  * POJO containing response object for API Gateway.
  *
@@ -22,7 +24,7 @@ public class GatewayResponse
     private final Map<String, String> headers;
     private final int statusCode;
 
-    public GatewayResponse(final Map<String, Object> body, final Map<String, String> headers, final int statusCode) throws Exception
+    public GatewayResponse(final Map<String, Object> body, final Map<String, String> headers, final int statusCode)
     {
         this.statusCode = statusCode;
         Map<String, Object> bodycurr=body;
@@ -31,20 +33,16 @@ public class GatewayResponse
         {
             case HttpStatus.SC_UNAUTHORIZED:
                 errorMessage = statusCode + " UNAUTHORIZED: " + bodycurr.get("message");
-                throw new Exception(errorMessage);
-                break;
+                throw new HttpHandlerException(errorMessage);
             case HttpStatus.SC_BAD_REQUEST:
                 errorMessage = statusCode + " BAD REQUEST: " + bodycurr.get("message");
-                throw new Exception(errorMessage);
-                break;
+                throw new HttpHandlerException(errorMessage);
             case HttpStatus.SC_INTERNAL_SERVER_ERROR:
                 errorMessage = statusCode + " INTERNAL SERVER ERROR: " + bodycurr.get("message");
-                throw new Exception(errorMessage);
-                break;
+                throw new HttpHandlerException(errorMessage);
             case HttpStatus.SC_NOT_FOUND:
                 errorMessage = statusCode + " NOT FOUND: " + bodycurr.get("message");
-                throw new Exception(errorMessage);
-                break;
+                throw new HttpHandlerException(errorMessage);
             default:
         }
         this.body = bodycurr;
