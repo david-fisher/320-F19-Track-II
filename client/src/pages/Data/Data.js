@@ -3,7 +3,7 @@ import {Container} from "react-bootstrap";
 import ReactSearchBox from 'react-search-box'
 import { Nav, Navbar, Dropdown, NavItem } from "react-bootstrap";
 
-import { VictoryLine, VictoryChart, VictoryLabel, VictoryAxis } from "victory";
+import { VictoryLine, VictoryChart, VictoryLabel, VictoryAxis } from 'victory';
 
 const data = [
         {
