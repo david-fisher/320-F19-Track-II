@@ -21,7 +21,7 @@ import java.util.Map;
 public class HoboRegHandler extends AbstractHandler
 {
     @Override
-    public GatewayResponse handleRequest(HashMap<String, String> input, Context context)
+    public GatewayResponse handleRequest(HashMap<String, String> input, Context context) throws Exception
     {
         System.out.println(input);
         Map<String, String> headers = new HashMap<>();
