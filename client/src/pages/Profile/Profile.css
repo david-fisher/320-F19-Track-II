@@ -1,0 +1,15 @@
+.Title {
+  padding: 1rem;
+  color:white;
+}
+.titleHR{
+  border:1px solid white;
+}
+.page{
+  background-color: maroon;
+  padding:25px;
+}
+.profile{
+  border: solid;
+  border-radius:25px
+}
