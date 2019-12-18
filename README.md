@@ -133,6 +133,7 @@ _**curl -X POST**_ http://localhost:8001 or run the python file send_img_request
   iii. Image prediction: the model will automatically predict the image and send it to the front end by request command via a json file, if everything goes correctly then the result should be in {body}{imageinfo}{0}{prediction}
 
 4. Authors
+
 Name | Role
 ------------ | -------------
 Vigneshsai Roshan | Team Leader
