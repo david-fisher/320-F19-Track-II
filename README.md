@@ -153,7 +153,7 @@ Will Murphy | Integration
 David Giang | Wild Card
 Nathan Ng | Customer Liason
 
-Front End Set Up:
+**Front End Set Up:**
 1. Install Node.js https://nodejs.org/en/download/
 2. Clone repo from git
 3. In the terminal, use ‘cd’ to change your current directory to client
