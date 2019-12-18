@@ -1,0 +1,37 @@
+.Title {
+  padding: 1rem;
+}
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+}
+.header {
+  margin-top: 20px;
+  font-style: italic;
+}
+.footer {
+  height: 70px;
+  font-size: 30px;
+  color: white;
+  padding-top: 10px;
+  text-indent: 50px;
+}
+.sticky {
+  position: fixed;
+  width: 100%;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+.left-margin {
+  margin-left: 10px;
+}
+.timeline {
+  border-top: solid;
+  border-color: rgb(0, 128, 58);
+  border-bottom: solid;
+  border-color: rgb(0, 128, 58);
+  margin-bottom: 100px;
+}
