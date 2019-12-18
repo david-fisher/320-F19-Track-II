@@ -48,7 +48,8 @@ public class PhotoUploadNew extends Fragment {
     Button takeGallery;
     Button upload;
     ImageView photo;
-    String filePath;
+
+    Uri fileUri = null;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -97,11 +98,59 @@ public class PhotoUploadNew extends Fragment {
         });
     }
 
+    private void disable() {
+        takePhoto.setEnabled(false);
+        takeGallery.setEnabled(false);
+        upload.setEnabled(false);
+    }
+
+    private void enable() {
+        takePhoto.setEnabled(true);
+        takeGallery.setEnabled(true);
+        upload.setEnabled(true);
+    }
+
     private void uploadImage() {
 
+        if (fileUri == null) {
+            return;
+        }
+
+        Activity activity = getActivity();
+        SharedPreferences sp = activity.getSharedPreferences("MyData", activity.MODE_PRIVATE);
+        String mobile_key = sp.getString("AuthKey", "EMPTY");
+        if (mobile_key == "EMPTY"){
+            throw new IllegalStateException("Attempting to upload image with an invalid authentication key.");
+        }
+        ContentResolver contentResolver = this.getContext().getContentResolver();
+        OWMARestRequestClient client = new OWMARestRequestClient(mobile_key, contentResolver);
+        if (fileUri != null) {
+            disable();
+            Toast.makeText(getContext(), "Uploading...", Toast.LENGTH_SHORT).show();
+            client.UploadImage(fileUri, (String m) -> {
+                if (m != null) {
+
+                    String msg = m;
+
+                    if (m.trim().equals("OK")) {
+                        msg = "Image Successfully Uploaded!";
+                    }
+
+                    Toast.makeText(getContext(), msg, Toast.LENGTH_LONG).show();
+                }
+
+                enable();
+            });
+        }
+    }
+
+    private void reset() {
+        fileUri = null;
+        photo.setImageDrawable(null);
     }
 
     private void chooseFromGallery() {
+        reset();
         //Create an Intent with action as ACTION_PICK
         Intent intent = new Intent(Intent.ACTION_PICK);
         // Sets the type as image/*. This ensures only components of type image are selected
@@ -115,49 +164,47 @@ public class PhotoUploadNew extends Fragment {
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        Activity activity = getActivity();
-        SharedPreferences sp = activity.getSharedPreferences("MyData", activity.MODE_PRIVATE);
-        String mobile_key = sp.getString("AuthKey", "EMPTY");
-        if (mobile_key == "EMPTY"){
-            throw new IllegalStateException("Attempting to upload image with an invalid authentication key.");
-        }
-        ContentResolver contentResolver = this.getContext().getContentResolver();
-        OWMARestRequestClient client = new OWMARestRequestClient(mobile_key, contentResolver);
+
         switch (requestCode) {
             case TAKE_NEW:
-                File image = new File(filePath);
-                client.UploadImage(image, (String m) -> Toast.makeText(getContext(), m, Toast.LENGTH_LONG).show());
                 break;
             case FROM_GALLERY:
                 if (resultCode == Activity.RESULT_OK && data != null) {
-                    Uri image_content_uri = data.getData();
-                    client.UploadImage(image_content_uri, (String m) -> Toast.makeText(getContext(), m, Toast.LENGTH_LONG).show());
+                    fileUri = data.getData();
                 }
                 break;
             default:
                 throw new IllegalStateException("Unexpected value: " + requestCode);
         }
+
+        if (fileUri != null) {
+            try {
+                Bitmap bmp = BitmapFactory.decodeStream(getContext().getContentResolver().openInputStream(fileUri));
+                photo.setImageBitmap(bmp);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     private void dispatchTakePicture() {
+        reset();
         Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         // Ensure that there's a camera activity to handle the intent
         if (takePictureIntent.resolveActivity(this.getActivity().getPackageManager()) != null) {
             // Create the File where the photo should go
-            File photoFile = null;
-            photoFile = createImageFile();
+            Uri uri = createImageFile();
+
             // Continue only if the File was successfully created
-            if (photoFile != null) {
-                Uri photoURI = FileProvider.getUriForFile(this.getActivity().getApplicationContext(),
-                        "com.example.owmobile.FileProvider",
-                        photoFile);
-                takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI);
+            if (uri != null) {
+                fileUri = uri;
+                takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, uri);
                 startActivityForResult(takePictureIntent, REQUEST_TAKE_PHOTO);
             }
         }
     }
 
-    private File createImageFile() {
+    private Uri createImageFile() {
         // Create an image file name
         String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
         String imageFileName = "JPEG_" + timeStamp + "_";
@@ -171,11 +218,13 @@ public class PhotoUploadNew extends Fragment {
             );
         } catch (IOException e) {
             e.printStackTrace();
+            return null;
         }
 
-        // Save a file: path for use with ACTION_VIEW intents
-        filePath = image.getAbsolutePath();
-        return image;
+        Uri photoURI = FileProvider.getUriForFile(this.getActivity().getApplicationContext(),
+                "com.example.owmobile.FileProvider",
+                image);
+        return photoURI;
     }
 
     @Override
