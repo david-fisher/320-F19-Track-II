@@ -56,21 +56,6 @@ export default function Home() {
         </Container>
       </Jumbotron>
       <Container>
-<<<<<<< HEAD
-        <h1>
-          Our Interative Heatmap
-        </h1>
-        <div style={{ height: "50vh", width: "100%" }}>
-          <GoogleMapReact
-            // ref={(el) => this._googleMap = el}
-            bootstrapURLKeys={apiKey}
-            defaultCenter={center.center}
-            defaultZoom={center.zoom}
-            heatmapLibrary={true}
-            heatmap={heatMapData}
-            options={options}
-          ></GoogleMapReact>
-=======
       <div style={{ height: '50vh', width: '100%' }}>
       <GoogleMapReact
           // ref={(el) => this._googleMap = el}
@@ -89,7 +74,7 @@ export default function Home() {
             <Dropdown.Item onClick={datasetTwo}>Humidity</Dropdown.Item>
           </Dropdown.Menu>
         </Dropdown>
->>>>>>> 7926de8e7e2ca7dc444501822bb28adb9c838111
+
 
       {/* <MapWithAMarker
         googleMapURL="https://maps.googleapis.com/maps/api/js?key=&v=3.exp&libraries=geometry,drawing,places"
