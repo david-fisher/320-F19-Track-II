@@ -7,13 +7,23 @@
   margin-right: auto;
   width: 100%;
 }
-.margin-bottom {
-  margin-bottom: 1rem;
+.header{
+  margin-top: 20px;
 }
-.SocialIcons {
-  margin-left: 0.5px;
+.footer{
+  height:10%;
+  width:100%;
+  font-size: 30px;
+  color:white;
+  padding-top: 10px;
+  text-indent: 50px;
 }
-.scroll {
-  height: 400px;
-  overflow: auto;
+.left-margin{
+  margin-left: 10px;
+}
+.timeline{
+  border-top:solid;
+  border-color: blue;
+  border-bottom:solid;
+  border-color: blue;
 }
