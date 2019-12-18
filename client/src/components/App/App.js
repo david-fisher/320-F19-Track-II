@@ -25,15 +25,23 @@ export default function App() {
         <Nav className="mr-auto">
           <Nav.Link href="/home">Home</Nav.Link>
           <Nav.Link href="/about">About Us</Nav.Link>
-          {token !== undefined && (
-            <Nav.Link href="/orchards">Orchards</Nav.Link>
-          )}
+          {/*{token !== undefined && (*/}
+          {/*  <Nav.Link href="/orchards">Orchards</Nav.Link>*/}
+          {/*)}*/}
           {token !== undefined && <Nav.Link href="/data">Data</Nav.Link>}
           {token !== undefined && <Nav.Link href="/gallery">Gallery</Nav.Link>}
+          {/*{token !== undefined && (*/}
+          {/*  <Nav.Link href="/observations">Observations</Nav.Link>*/}
+          {/*)}*/}
           {token !== undefined && (
-            <Nav.Link href="/observations">Observations</Nav.Link>
+            <Dropdown as={NavItem}>
+              <Dropdown.Toggle as={Nav.Link}>Ask AI</Dropdown.Toggle>
+              <Dropdown.Menu alignRight={true}>
+                <Dropdown.Item href="/predict">Predict</Dropdown.Item>
+                <Dropdown.Item href="/annotate">Annotate</Dropdown.Item>
+              </Dropdown.Menu>
+            </Dropdown>
           )}
-          {token !== undefined && <Nav.Link href="/ask-ai">Ask AI</Nav.Link>}
         </Nav>
 
         <Nav className="justify-content-end">
@@ -46,7 +54,7 @@ export default function App() {
               <Dropdown.Toggle as={Nav.Link}>{name}</Dropdown.Toggle>
               <Dropdown.Menu alignRight={true}>
                 <Dropdown.Item href="/profile">Profile</Dropdown.Item>
-                <Dropdown.Item href="/dashboard">Dashboard</Dropdown.Item>
+                {/*<Dropdown.Item href="/dashboard">Dashboard</Dropdown.Item>*/}
                 <Dropdown.Item onClick={logout}>Logout</Dropdown.Item>
               </Dropdown.Menu>
             </Dropdown>
