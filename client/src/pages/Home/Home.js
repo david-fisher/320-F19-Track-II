@@ -1,28 +1,50 @@
 import React from "react";
-import { Jumbotron, Container } from "react-bootstrap";
-import GoogleMapReact from "google-map-react";
+import { Jumbotron, Container, Dropdown, NavItem } from "react-bootstrap";
+import GoogleMapReact from 'google-map-react'
 
 //some random points from the map for data sim
-const center = {
+const center =  {
   center: {
     lat: 42.254009,
     lng: -72.360191
   },
   zoom: 15
-};
-const heatmapPoints = [
-  { lat: 42.255224, lng: -72.36165, weight: 100 },
-  { lat: 42.253517, lng: -72.358807, weight: 10 }
-];
-const apiKey = { key: "" }; //my guess is we will not have a paid api key by demo time
-const heatMapData = {
+}
+const heatmapPoints =  [
+  {lat: 42.255224, lng: -72.361650, weight: 6},
+  {lat: 42.253517, lng: -72.358807, weight: .3},
+  {lat: 42.255434, lng: -72.361450, weight: 3},
+  {lat: 42.253317, lng: -72.356707, weight: 1}
+]
+const heatmapPoints2 =  [
+  {lat: 42.255224, lng: -72.361650, weight: 4},
+  // {lat: 42.253517, lng: -72.358807, weight: 1},
+  // {lat: 42.255434, lng: -72.361450, weight: 1},
+  // {lat: 42.253317, lng: -72.356707, weight: 3}
+]
+
+
+const apiKey = {key: ''} //my guess is we will not have a paid api key by demo time
+var heatMapData = {
   positions: heatmapPoints,
   options: {
     radius: 20,
     opacity: 0.6
   }
-};
-const options = { mapTypeId: "satellite" };
+}
+const options = {mapTypeId: 'satellite'}
+
+var thisDataset = heatmapPoints;
+
+function datasetOne() {
+  heatMapData.positions = {};
+
+}
+
+function datasetTwo() {
+  heatMapData.positions = heatmapPoints2;
+}
+
 
 export default function Home() {
   return (
@@ -34,6 +56,7 @@ export default function Home() {
         </Container>
       </Jumbotron>
       <Container>
+<<<<<<< HEAD
         <h1>
           Our Interative Heatmap
         </h1>
@@ -47,14 +70,34 @@ export default function Home() {
             heatmap={heatMapData}
             options={options}
           ></GoogleMapReact>
+=======
+      <div style={{ height: '50vh', width: '100%' }}>
+      <GoogleMapReact
+          // ref={(el) => this._googleMap = el}
+          bootstrapURLKeys={apiKey}
+          defaultCenter={center.center}
+          defaultZoom={center.zoom}
+          heatmapLibrary={true}
+          heatmap={heatMapData}
+          options={options}
+        >
+        </GoogleMapReact>
+        <Dropdown as={NavItem}>
+          <Dropdown.Toggle id="toggle">Measure to Display</Dropdown.Toggle>
+          <Dropdown.Menu alignRight={true}>
+            <Dropdown.Item onClick={datasetOne}>Temprature</Dropdown.Item>
+            <Dropdown.Item onClick={datasetTwo}>Humidity</Dropdown.Item>
+          </Dropdown.Menu>
+        </Dropdown>
+>>>>>>> 7926de8e7e2ca7dc444501822bb28adb9c838111
 
-          {/* <MapWithAMarker
+      {/* <MapWithAMarker
         googleMapURL="https://maps.googleapis.com/maps/api/js?key=&v=3.exp&libraries=geometry,drawing,places"
         loadingElement={<div style={{ height: `100%` }} />}
         containerElement={<div style={{ height: `400px` }} />}
         mapElement={<div style={{ height: `100%` }} />}
       /> */}
-        </div>
+      </div>
       </Container>
       <Container>
         <p className="lead">
