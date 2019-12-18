@@ -8,7 +8,7 @@ const data = [
           "Epochtime": 1576475402,
           "HoboID": "454-788",
           "Humidity": 7,
-          "LeafWetness": 9,
+          "LeafWetness": 4,
           "Rainfall": 83,
           "SoilMoisture": 43,
           "SolarRadiation": 343413,
@@ -53,11 +53,11 @@ const data = [
           "HoboID": "454-789",
           "Humidity": 1,
           "LeafWetness": 9,
-          "Rainfall": 83,
-          "SoilMoisture": 43,
-          "SolarRadiation": 343413,
-          "Temperature": 92,
-          "Wind": 4
+          "Rainfall": 23,
+          "SoilMoisture": 73,
+          "SolarRadiation": 383413,
+          "Temperature": 32,
+          "Wind": 8
         },
         {
           "Epochtime": 1576475406,
@@ -115,8 +115,8 @@ class Map extends React.Component {
           { lat: 42.253517, lng: -72.35880, weight: 1 }
         ],
         options: {
-          radius: 20,
-          opacity: 0.6
+          radius: 50,
+          opacity: 0.5
         }
       }
     };
@@ -164,8 +164,6 @@ class Map extends React.Component {
     }
   }
 
-
-<<<<<<< HEAD
   render() {
     return (
       <div>
@@ -228,60 +226,6 @@ export default function Data(){
       <Container className="Title">
         <h1>Data page</h1>
         <hr />
-=======
-export default function Home() {
-  return (
-    <div>
-      <div className="jumb">
-        <Container class="container">
-          <Jumbotron>
-            <h1>Welcome to Orchard Watch!</h1>
-            <p>For the future of farming</p>
-          </Jumbotron>
-        </Container>
-      </div>
-
-      <Container>
-        <h1>Interactive Heatmap</h1>
-        <div style={{ height: "50vh", width: "100%" }}>
-          <Dropdown as={NavItem}>
-            <Dropdown.Toggle id="toggle">Measure to Display</Dropdown.Toggle>
-            <Dropdown.Menu alignRight={true}>
-              <Dropdown.Item onClick={datasetOne}>Temprature</Dropdown.Item>
-              <Dropdown.Item onClick={datasetTwo}>Humidity</Dropdown.Item>
-            </Dropdown.Menu>
-          </Dropdown>
-          <GoogleMapReact
-            // ref={(el) => this._googleMap = el}
-            bootstrapURLKeys={apiKey}
-            defaultCenter={center.center}
-            defaultZoom={center.zoom}
-            heatmapLibrary={true}
-            heatmap={heatMapData}
-            options={options}
-          ></GoogleMapReact>
-
-          {/* <MapWithAMarker
-            googleMapURL="https://maps.googleapis.com/maps/api/js?key=&v=3.exp&libraries=geometry,drawing,places"
-            loadingElement={<div style={{ height: `100%` }} />}
-            containerElement={<div style={{ height: `400px` }} />}
-            mapElement={<div style={{ height: `100%` }} />}
-          /> */}
-        </div>
-      </Container>
-      <Container className="textPadding">
-        <h1 className="header">How to Use</h1>
-        <p className="lead paragraph">
-          You can use the heatmap above to visual the data we collect and analyze 
-          here at Orchard Watch. You can zoom in and scroll around to look 
-          closely at where our sensors are placed within the orchard. To change 
-          which type of data is being displayed, use the drop down menu above the 
-          map. Our sensors collect data on temperature, humidity, solar radiation, 
-          soil moisture, leaf wetness, rainfall, and wind speed. Areas with high 
-          values or intensity red or orange, with values decreasing as the colors 
-          change to yellow, green, and eventually to a clear overlay.
-        </p>
->>>>>>> 61c7375d40bde932986fec9d26a024e59b7fe43b
       </Container>
       <div className = "container">
         <Map/>
