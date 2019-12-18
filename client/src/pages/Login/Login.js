@@ -8,10 +8,12 @@ import {
 } from "react-bootstrap";
 import "./Login.css";
 import Cookies from "universal-cookie";
+import LoginModal from "../../components/LoginModal/LoginModal";
 
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [modalShow, setModalShow] = useState(false);
 
   function validateForm() {
     return email.length > 0 && password.length > 0;
@@ -48,13 +50,29 @@ export default function Login() {
           console.log("hooray! we have json!");
           console.log(json);
           const cookies = new Cookies();
-          cookies.set("name", "David", { path: "/" });
-          cookies.set("token", "test_token_value", { path: "/" });
-          alert("Logged in");
-          window.location.reload();
+          cookies.remove("email");
+          cookies.remove("firstName");
+          cookies.remove("lastName");
+          cookies.remove("role");
+          cookies.remove("token");
+          cookies.set("email", json["body"]["userinfo"]["EMail"], {
+            path: "/"
+          });
+          cookies.set("firstName", json["body"]["userinfo"]["FName"], {
+            path: "/"
+          });
+          cookies.set("lastName", json["body"]["userinfo"]["LName"], {
+            path: "/"
+          });
+          cookies.set("role", json["body"]["userinfo"]["Role"], { path: "/" });
+          cookies.set("token", json["body"]["token"], { path: "/" });
+        })
+        .then(() => {
+          setModalShow(true);
         })
         .catch(error => {
           alert("Invalid credentials");
+          console.log(error);
         });
     }
   }
@@ -90,6 +108,13 @@ export default function Login() {
               Create an account
             </Button>
           </FormGroup>
+          <LoginModal
+            show={modalShow}
+            onHide={() => {
+              setModalShow(false);
+              window.location.reload();
+            }}
+          />
         </form>
       </div>
     </div>

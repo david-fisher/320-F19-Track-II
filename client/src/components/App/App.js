@@ -7,10 +7,13 @@ import { Nav, Navbar, Dropdown, NavItem } from "react-bootstrap";
 export default function App() {
   const cookies = new Cookies();
   const token = cookies.get("token");
-  const name = cookies.get("email");
+  const name = cookies.get("firstName");
 
   function logout() {
-    cookies.remove("name");
+    cookies.remove("email");
+    cookies.remove("firstName");
+    cookies.remove("lastName");
+    cookies.remove("role");
     cookies.remove("token");
     window.location.reload();
   }
