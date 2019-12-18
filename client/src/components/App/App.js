@@ -7,10 +7,13 @@ import { Nav, Navbar, Dropdown, NavItem } from "react-bootstrap";
 export default function App() {
   const cookies = new Cookies();
   const token = cookies.get("token");
-  const name = cookies.get("name");
+  const name = cookies.get("firstName");
 
   function logout() {
-    cookies.remove("name");
+    cookies.remove("email");
+    cookies.remove("firstName");
+    cookies.remove("lastName");
+    cookies.remove("role");
     cookies.remove("token");
     window.location.reload();
   }
@@ -22,15 +25,21 @@ export default function App() {
         <Nav className="mr-auto">
           <Nav.Link href="/home">Home</Nav.Link>
           <Nav.Link href="/about">About Us</Nav.Link>
-          <Nav.Link href="/orchards">Orchards</Nav.Link>
-          <Nav.Link href="/data">Data</Nav.Link>
-          <Nav.Link href="/gallery">Gallery</Nav.Link>
-          <Nav.Link href="/observations">Observations</Nav.Link>
-          {token !== undefined && <Nav.Link href="/ask-ai">Ask AI</Nav.Link> //add this to each navbar item that should only appear while signed in
-          }
+          {token !== undefined && (
+            <Nav.Link href="/orchards">Orchards</Nav.Link>
+          )}
+          {token !== undefined && <Nav.Link href="/data">Data</Nav.Link>}
+          {token !== undefined && <Nav.Link href="/gallery">Gallery</Nav.Link>}
+          {token !== undefined && (
+            <Nav.Link href="/observations">Observations</Nav.Link>
+          )}
+          {token !== undefined && <Nav.Link href="/ask-ai">Ask AI</Nav.Link>}
         </Nav>
 
         <Nav className="justify-content-end">
+          {token === undefined && (
+            <Nav.Link href="/register">Register</Nav.Link>
+          )}
           {token === undefined && <Nav.Link href="/login">Login</Nav.Link>}
           {token !== undefined && (
             <Dropdown as={NavItem}>
