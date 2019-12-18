@@ -2,7 +2,11 @@ package com.example.owmobile;
 
 import android.Manifest;
 import android.app.Activity;
+import android.content.ContentResolver;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.database.Cursor;
+import android.preference.PreferenceManager;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -11,11 +15,13 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -25,8 +31,11 @@ import androidx.fragment.app.Fragment;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.URI;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+
+import com.example.owmobile.OWMARestRequestClient;
 
 public class PhotoUploadNew extends Fragment {
     static final int REQUEST_TAKE_PHOTO = 1;
@@ -106,21 +115,23 @@ public class PhotoUploadNew extends Fragment {
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        Activity activity = getActivity();
+        SharedPreferences sp = activity.getSharedPreferences("MyData", activity.MODE_PRIVATE);
+        String mobile_key = sp.getString("AuthKey", "EMPTY");
+        if (mobile_key == "EMPTY"){
+            throw new IllegalStateException("Attempting to upload image with an invalid authentication key.");
+        }
+        ContentResolver contentResolver = this.getContext().getContentResolver();
+        OWMARestRequestClient client = new OWMARestRequestClient(mobile_key, contentResolver);
         switch (requestCode) {
             case TAKE_NEW:
-                Bitmap bitmap = BitmapFactory.decodeFile(filePath);
-                photo.setImageBitmap(bitmap);
+                File image = new File(filePath);
+                client.UploadImage(image, (String m) -> Toast.makeText(getContext(), m, Toast.LENGTH_LONG).show());
                 break;
             case FROM_GALLERY:
                 if (resultCode == Activity.RESULT_OK && data != null) {
-                    try {
-                        InputStream is = getContext().getContentResolver().openInputStream(data.getData());
-                        Bitmap bmp = BitmapFactory.decodeStream(is);
-                        photo.setImageBitmap(bmp);
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-
+                    Uri image_content_uri = data.getData();
+                    client.UploadImage(image_content_uri, (String m) -> Toast.makeText(getContext(), m, Toast.LENGTH_LONG).show());
                 }
                 break;
             default:
