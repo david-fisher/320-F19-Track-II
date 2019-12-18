@@ -83,8 +83,8 @@ Function | Handler
 register_user | entrypoints.UserRegistrationHandler::handleRequest
 get_s3_key | entrypoints.MobileVerificationHandler::handleRequest
 get_image | entrypoints.GetImagesHandlers::handleRequest
-mobile_vertification | entrypoints.UserRegistrationHandler::handleRequest
-user_login | entrypoints.ImageUploadHandler::handleRequest
+mobile_vertification | entrypoints.MobileVerificationHandler::handleRequest
+user_login | entrypoints.UserLoginHandler::handleRequest
 image_upload | entrypoints.ImageUploadHandler::handleRequest
 hobo_data_pull | entrypoints.HoboRegHandler::handleRequest
 pull_data | entrypoints.HoboPullDataHandler::handleRequest
