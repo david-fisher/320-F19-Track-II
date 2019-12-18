@@ -6,7 +6,7 @@ import { Timeline } from "react-twitter-widgets";
 
 export function About() {
   return (
-    <div>
+    <body>
       <Container className="Title">
         <h1>About Us</h1>
         <hr />
@@ -42,13 +42,13 @@ export function About() {
           }}
         />
       </Container>
-      <footer class="page-footer font-small bg-dark footer text-justify">
+      <footer class="page-footer font-small bg-dark footer navbar-fixed-bottom sticky">
         Follow Our Social Media    
         <SocialIcon className = "left-margin" url="http://facebook.com" />
         <SocialIcon url="http://instagram.com" />
         <SocialIcon url="http://twitter.com" />
       </footer>
-    </div>
+    </body>
     
   );
 }
