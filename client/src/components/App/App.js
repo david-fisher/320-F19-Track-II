@@ -30,7 +30,9 @@ export default function App() {
           )}
           {token !== undefined && <Nav.Link href="/data">Data</Nav.Link>}
           {token !== undefined && <Nav.Link href="/gallery">Gallery</Nav.Link>}
-          <Nav.Link href="/observations">Observations</Nav.Link>
+          {token !== undefined && (
+            <Nav.Link href="/observations">Observations</Nav.Link>
+          )}
           {token !== undefined && <Nav.Link href="/ask-ai">Ask AI</Nav.Link>}
         </Nav>
 
