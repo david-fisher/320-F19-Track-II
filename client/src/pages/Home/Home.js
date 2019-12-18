@@ -49,8 +49,10 @@ export default function Home() {
     <div>
       <div className="jumb">
         <Container class="container">
-          <h1>Welcome to OrchardWatch!</h1>
-          <p>We watch the Orchards and do cool data stuff.</p>
+          <Jumbotron>
+            <h1>Welcome to OrchardWatch!</h1>
+            <p>We watch the Orchards and do cool data stuff.</p>
+          </Jumbotron>
         </Container>
       </div>
 
