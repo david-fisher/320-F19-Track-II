@@ -22,40 +22,40 @@ README for Track II
    * $1.00 for the first 300 million calls
    * $0.90 for 300+ million calls
 * Lambda:
- * Triggered by API gateway, functions do work like:
-  * Query database
-  * Pull data from HOBOnet
-  * Retrieve/Upload from/to S3
- * Charged per million requests
-  * $0.20/1 million requests
-  * Only charged when used
+  * Triggered by API gateway, functions do work like:
+   * Query database
+   * Pull data from HOBOnet
+   * Retrieve/Upload from/to S3
+  * Charged per million requests
+   * $0.20/1 million requests
+   * Only charged when used
 * S3:
- * Large amounts of storage for cheap
- * Stores the code for our front end, the images and long term storage
- * Redirects non-WWW domain name to WWW domain name
-  * orchardwatch.com redirects to www.orchardwatch.com
- * Hosts our static website
-  * Integrates with CloudFront and Route 53
- * Pricing depends on how data is stored in your bucket every month
-  * $0.023 per GB for first 50 TB
-  * $0.022 per GB for next 45o TB
+  * Large amounts of storage for cheap
+  * Stores the code for our front end, the images and long term storage
+  * Redirects non-WWW domain name to WWW domain name
+   * orchardwatch.com redirects to www.orchardwatch.com
+  * Hosts our static website
+   * Integrates with CloudFront and Route 53
+  * Pricing depends on how data is stored in your bucket every month
+   * $0.023 per GB for first 50 TB
+   * $0.022 per GB for next 45o TB
 * DynamoDB:
- * Storing data like user credentials, HOBOnet data, and that which is not in an S3 bucket
- * Queried when logging in, registering, requesting data, and when looking for ID’s of images stored in S3
- * Charged based on how much data is stored and how many requests are made
-  * $1.25/million write requests
-  * $0.25/million read requests 
-  * Free first 25 GB
-  * $0.25/GB after
+  * Storing data like user credentials, HOBOnet data, and that which is not in an S3 bucket
+  * Queried when logging in, registering, requesting data, and when looking for ID’s of images stored in S3
+  * Charged based on how much data is stored and how many requests are made
+   * $1.25/million write requests
+   * $0.25/million read requests 
+   * Free first 25 GB
+   * $0.25/GB after
 * EC2: 
- * Instance of a virtual machine, used for machine learning team
- * Charged hourly for having the VM running
-  * $0.0116 per hour
+  * Instance of a virtual machine, used for machine learning team
+  * Charged hourly for having the VM running
+   * $0.0116 per hour
 * CloudWatch:
- * Natively integrates into AWS services
- * Used to track resource usage across all services as well as track charges
- * Alarms can be set up to make sure HOBO data is being pulled 
- * Monitors overall health of our system
+  * Natively integrates into AWS services
+  * Used to track resource usage across all services as well as track charges
+  * Alarms can be set up to make sure HOBO data is being pulled 
+  * Monitors overall health of our system
 
 **Lambda Set Up:**
 1. Install maven https://maven.apache.org/install.html
