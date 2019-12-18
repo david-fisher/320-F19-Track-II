@@ -61,13 +61,13 @@ README for Track II
 1. Install maven https://maven.apache.org/install.html
 2. Navigate to the Lambda folder in terminal
 3. Run “mvn package 
-![](Screenshot_1.png)
-![](Screenshot_2.png)
+![](readmeimages/Screenshot_1.png)
+![](readmeimages/Screenshot_2.png)
 The output .jar file is located at .../Lambda/target/lambda-1.0-SNAPSHOT.jar
 4. Login to AWS with an account that has permission to add/edit lambdas
 5. Create the following lambda functions: register_user, get_s3_key, get_image, mobile_vertification, user_login, image_upload, hobo_data_pull, and pull_data
 6. In the “Function code” section for each lambda, upload the lambda-1.0-SNAPSHOT.jar acquired earlier (all functions use the same jar).
-![](Screenshot_3.png)
+![](readmeimages/Screenshot_3.png)
 7. Also in the function code section, specify the handlers for each lambda function accordingly:
 
 Function | Handler
