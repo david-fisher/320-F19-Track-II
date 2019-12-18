@@ -66,11 +66,11 @@ const data = [
           "HoboID": "454-789",
           "Humidity": 3,
           "LeafWetness": 9,
-          "Rainfall": 83,
-          "SoilMoisture": 43,
-          "SolarRadiation": 323444,
+          "Rainfall": 73,
+          "SoilMoisture": 73,
+          "SolarRadiation": 327444,
           "Temperature": 12,
-          "Wind": 7
+          "Wind": 5
         },
         {
           "Epochtime": 1576475404,
@@ -80,7 +80,7 @@ const data = [
           "Rainfall": 73,
           "SoilMoisture": 43,
           "SolarRadiation": 323413,
-          "Temperature": 92,
+          "Temperature": 32,
           "Wind": 6
         },
         {
@@ -157,6 +157,8 @@ function Graph(props) {
       x="Epochtime"
       y={props.y.y}
     />
+    <VictoryAxis tickFormat={() => ''} />
+    <VictoryAxis dependentAxis />
   </VictoryChart>)
   return(page)
 
