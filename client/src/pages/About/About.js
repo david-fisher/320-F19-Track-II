@@ -16,17 +16,19 @@ export function About() {
   
           <h1 className = "header ">Our Mission</h1>
           <p class="lead border border-light rounded" >
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras pulvinar
-            pharetra felis, id faucibus magna. Donec iaculis sagittis leo, at
-            dictum metus volutpat eget. Praesent iaculis sit amet mauris ut
-            euismod. Aliquam pulvinar consequat facilisis. Cras quis laoreet leo.
-            Cras porttitor iaculis posuere. Maecenas pulvinar, risus non eleifend
-            congue, mauris urna euismod nibh, at venenatis dolor diam id lectus.
-            Ut ut congue mauris. Sed rhoncus commodo velit, a consectetur metus.
-            Morbi justo tortor, aliquet non mi nec, tincidunt condimentum augue.
-            Suspendisse elementum feugiat scelerisque. Integer cursus eros in eros
-            facilisis, id pharetra eros ultrices. Donec aliquet risus eu aliquam
-            elementum.
+          Here at OrchardWatch, we are working to help farmers be more efficient with production 
+          and management on their farms while also bringing knowledge about where our food comes 
+          from into the public eye. Today there are over 820 million people suffering from hungering 
+          around the world. With the global population set to surpass 9 billion by the year 2050, our food 
+          production will need to more than double. This increased demand for food production, 
+          combined with the growing threat of climate change affecting our crops, means that farms 
+          will need to use their land more efficiently in order to put an end to world hunger. By 
+          using networks of sensors and advanced models, we can provide meaningful and precise data 
+          to help farmers better visualize conditions on their farms, receive alerts when plants are 
+          at risk, and predict when the best time to fertilize, water, and harvest will be. We also give 
+          farmers the tools they need to identify pests and diseases that may hurt their crops by using 
+          artificial intelligence to analyze images and identify possible threats. It is our hope that by 
+          raising awareness and improving the efficiency of farms we can create a better future without mass hunger.
           </p>
       </Container>
       <Container className = "timeline">
