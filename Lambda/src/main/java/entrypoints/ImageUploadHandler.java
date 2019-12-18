@@ -55,18 +55,41 @@ public class ImageUploadHandler extends AbstractHandler
         }
 
         UserTableConnector userDb = new UserTableConnector();
-        String email;
+        String email = null;
+        String role = "";
         if (!request.getMobileKey().equals(""))
         {
-            email = userDb.mobileAuthenticate(request.getMobileKey()).get("Email");
+            Map<String, String> userFields = userDb.mobileAuthenticate(request.getMobileKey());
+            if (userFields != null)
+            {
+              email = userFields.get("Email");
+              role = userFields.get("Role");
+            }
         } else
         {
             email = TokenHelper.verifyToken(request.getToken());
+            if(email != null)
+            {
+              try {
+                Map<String, Object> userRow = (Map<String, Object>)userDb.getUserInfo(email);
+                role = (String)userRow.get("Role");
+              }catch (Exception e)
+              {
+                  body.put("message", e.getMessage());
+                  return new GatewayResponse(body, headers, HttpStatus.SC_INTERNAL_SERVER_ERROR);
+              }
+            }
         }
         if (email == null)
         {
             body.put("message", "Incorrect credentials.");
             return new GatewayResponse(body, headers, HttpStatus.SC_UNAUTHORIZED);
+        }
+
+        if (role.equals("PUBLIC"))
+        {
+          body.put("message", "Public user accounts are not authorized to upload images");
+          return new GatewayResponse(body, headers, HttpStatus.SC_UNAUTHORIZED);
         }
 
         //MUST BE PNG/JPG
