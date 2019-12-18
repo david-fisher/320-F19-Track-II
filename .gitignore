@@ -61,3 +61,5 @@ Thumbs.db
 # Evil evil evil evil #
 node_modules/
 
+# Unignore since we should be committing it for gradle.
+!gradle-wrapper.jar
