@@ -4,7 +4,7 @@ README for Track II
 **Cloud Set Up:**
 
 * Route 53:
-  * Register your own custom domain name, Ex: www.orchardwatch.com
+  * Register your own custom domain name (ex: www.orchardwatch.com)
   * Routes user requests through CloudFront to S3 where our static website is hosted 
   * Connects users to our internal infrastructure   * Annual cost for domain name, and monthly costs for hosted zones
    * $12 a year for our domain, and $0.50 a month because we have one hosted zone 
@@ -58,9 +58,9 @@ README for Track II
   * Monitors overall health of our system
 
 **Lambda Set Up:**
-1. Install maven https://maven.apache.org/install.html
+1. Install Maven: https://maven.apache.org/install.html
 2. Navigate to the Lambda folder in terminal
-3. Run “mvn package 
+3. Run “mvn package" 
 
 ![](readmeimages/Screenshot_1.png)
 
@@ -90,10 +90,10 @@ pull_data | pull_data
 
 
 **Mobile Set Up:**
-1. Download and Install Android Studio:https://developer.android.com/studio
-2. Clone Repo from Git
-3. Run App: Start by opening Android Studio
- a. With an Emulator: 
+1. Download and install Android Studio: https://developer.android.com/studio
+2. Clone repo from Git
+3. Run app: Start by opening Android Studio
+ a. With an emulator: 
   i. Click on list of available devices
   ii. If no emulators are set up, set up emulator:
    1. Click on AVD Manager
@@ -101,8 +101,8 @@ pull_data | pull_data
    3. Choose an android device to add and then click “next”
    4. Click on latest release and then click “next”
    5. Click finish, that device is now added to the list of device emulators
- b. With an Android Device:
-  i .Connect usb/usb-c to from computer to phone
+ b. With an Android device:
+  i. Connect usb/usb-c to from computer to phone
   ii. Select the device from list of devices at the top of the screen
  c. Click the run button to download and run the app onto the device of your choosing
 
