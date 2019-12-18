@@ -5,9 +5,12 @@
   margin-top: 50px;
 }
 .header{
-  background-color: aquamarine;
   margin-bottom: 0px;
+  font-style: italic;
 }
-.paragraph{
-  background-color: aquamarine;
+.jumb{
+  padding: 40px;
+  background-color: maroon;
+  color:white;
+ 
 }

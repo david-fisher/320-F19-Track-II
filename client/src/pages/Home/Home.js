@@ -50,12 +50,12 @@ function datasetTwo() {
 export default function Home() {
   return (
     <div>
-      <Jumbotron>
-        <Container>
+      <div className = "jumb">
+        <Container class = "container">
           <h1>Welcome to OrchardWatch!</h1>
           <p>We watch the Orchards and do cool data stuff.</p>
         </Container>
-      </Jumbotron>
+      </div>
       
       <Container>
         <h1>Interactive Heatmap</h1>
