@@ -1,15 +1,24 @@
 apply plugin: 'com.android.application'
 
+
 android {
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
     compileSdkVersion 28
     buildToolsVersion "29.0.2"
     defaultConfig {
         applicationId "com.example.owmobile"
-        minSdkVersion 24
+        minSdkVersion 26
         targetSdkVersion 28
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
     }
     buildTypes {
         release {
@@ -29,8 +38,15 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1'
     implementation 'com.google.android.material:material:1.0.0'
+<<<<<<< HEAD
     //implementation 'com.konghq.unirest:unirest-java:3.3.00'
     implementation files('src/libs/unirest-java-3.3.00-standalone.jar')
     //implementation 'com.squareup.retrofit2:retrofit:2.6.3'
     //implementation 'com.squareup.retrofit2:converter-gson:2.6.3'
+=======
+    // implementation 'com.mashape.unirest:unirest-android:1.0+'
+    implementation files('src/libs/unirest-java-3.3.00-standalone.jar')
+    // io functions from apache commons
+    implementation "commons-io:commons-io:+"
+>>>>>>> 9e662a17fc5862c8da957f5c475a1e776822379b
 }
