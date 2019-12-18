@@ -4,7 +4,7 @@ import "./Gallery.css";
 import { Container, Button } from "react-bootstrap";
 
 
-const images = [
+let imgs = [
   {
     src: "https://images.unsplash.com/photo-1537811465496-6c38a51d2d81?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60",
     thumbnail: "https://images.unsplash.com/photo-1537811465496-6c38a51d2d81?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
