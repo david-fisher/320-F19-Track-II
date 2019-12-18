@@ -106,7 +106,7 @@ Used for web front end. Will return user info without password and a token (work
 
 Token is valid for 24 hours, it was generated through AES encryption and encoded through Base64.
 
-**API Gatway EndPoints:** GET `https://mt7pf3aohi.execute-api.us-east-2.amazonaws.com/test/user-login`
+**API Gatway EndPoints:** POST `https://mt7pf3aohi.execute-api.us-east-2.amazonaws.com/test/user-login`
 
 **Request Format**:
 ```json
