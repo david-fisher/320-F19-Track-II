@@ -1,6 +1,7 @@
 import React from "react";
-import { Jumbotron, Container, Dropdown, NavItem } from "react-bootstrap";
+import { Jumbotron, Container, Dropdown, NavItem, Row } from "react-bootstrap";
 import GoogleMapReact from 'google-map-react'
+import "./Home.css";
 
 //some random points from the map for data sim
 const center =  {
@@ -55,37 +56,39 @@ export default function Home() {
           <p>We watch the Orchards and do cool data stuff.</p>
         </Container>
       </Jumbotron>
+      
       <Container>
-      <div style={{ height: '50vh', width: '100%' }}>
-      <GoogleMapReact
-          // ref={(el) => this._googleMap = el}
-          bootstrapURLKeys={apiKey}
-          defaultCenter={center.center}
-          defaultZoom={center.zoom}
-          heatmapLibrary={true}
-          heatmap={heatMapData}
-          options={options}
-        >
-        </GoogleMapReact>
-        <Dropdown as={NavItem}>
-          <Dropdown.Toggle id="toggle">Measure to Display</Dropdown.Toggle>
-          <Dropdown.Menu alignRight={true}>
-            <Dropdown.Item onClick={datasetOne}>Temprature</Dropdown.Item>
-            <Dropdown.Item onClick={datasetTwo}>Humidity</Dropdown.Item>
-          </Dropdown.Menu>
-        </Dropdown>
-
-
-      {/* <MapWithAMarker
-        googleMapURL="https://maps.googleapis.com/maps/api/js?key=&v=3.exp&libraries=geometry,drawing,places"
-        loadingElement={<div style={{ height: `100%` }} />}
-        containerElement={<div style={{ height: `400px` }} />}
-        mapElement={<div style={{ height: `100%` }} />}
-      /> */}
-      </div>
+        <h1>Interactive Heatmap</h1>
+        <div style={{ height: '50vh', width: '100%' }}>
+          <Dropdown as={NavItem}>
+            <Dropdown.Toggle id="toggle">Measure to Display</Dropdown.Toggle>
+            <Dropdown.Menu alignRight={true}>
+              <Dropdown.Item onClick={datasetOne}>Temprature</Dropdown.Item>
+              <Dropdown.Item onClick={datasetTwo}>Humidity</Dropdown.Item>
+            </Dropdown.Menu>
+          </Dropdown>
+          <GoogleMapReact
+              // ref={(el) => this._googleMap = el}
+              bootstrapURLKeys={apiKey}
+              defaultCenter={center.center}
+              defaultZoom={center.zoom}
+              heatmapLibrary={true}
+              heatmap={heatMapData}
+              options={options}
+            >
+          </GoogleMapReact>
+          
+          {/* <MapWithAMarker
+            googleMapURL="https://maps.googleapis.com/maps/api/js?key=&v=3.exp&libraries=geometry,drawing,places"
+            loadingElement={<div style={{ height: `100%` }} />}
+            containerElement={<div style={{ height: `400px` }} />}
+            mapElement={<div style={{ height: `100%` }} />}
+          /> */}
+        </div>
       </Container>
-      <Container>
-        <p className="lead">
+      <Container className = "textPadding">
+        <h1 className = "header">How to Use</h1>
+        <p className = "lead paragraph">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras pulvinar
           pharetra felis, id faucibus magna. Donec iaculis sagittis leo, at
           dictum metus volutpat eget. Praesent iaculis sit amet mauris ut

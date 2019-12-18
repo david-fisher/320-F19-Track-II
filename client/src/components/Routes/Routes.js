@@ -22,15 +22,15 @@ export default function Routes() {
       <Redirect exact from="/" to="/home" />
       <Route path="/home" exact component={Home} />
       <Route path="/about" exact component={About} />
-      <AuthenticatedRoute path="/gallery" exact component={Gallery} />>
+      <Route path="/gallery" exact component={Gallery} />>
       <AuthenticatedRoute path="/dashboard" exact component={Dashboard} />
       <UnauthenticatedRoute path="/login" exact component={Login} />
       <AuthenticatedRoute path="/profile" exact component={Profile} />
-      <AuthenticatedRoute path="/ask-ai" exact component={AI} />
-      <AuthenticatedRoute path="/observations" exact component={Observations} />
-      <AuthenticatedRoute path="/data" exact component={Data} />
-      <AuthenticatedRoute path="/orchards" exact component={Orchards} />
-      <UnauthenticatedRoute path="/register" exact component={Register} />
+      <Route path="/ask-ai" exact component={AI} />
+      <Route path="/observations" exact component={Observations} />
+      <Route path="/data" exact component={Data} />
+      <Route path="/orchards" exact component={Orchards} />
+      <Route path="/register" exact component={Register} />
       <Route component={NotFound} />
     </Switch>
   );
