@@ -7,13 +7,8 @@ import {
   Row,
   Col
 } from "react-bootstrap";
-import Form from "react-bootstrap/Form";
 import "./Register.css";
-import "react-datepicker/dist/react-datepicker.css";
-import InputGroup from "react-bootstrap/InputGroup";
-import DatePicker from "react-datepicker";
 import Cookies from "universal-cookie";
-import SuccessModal from "../../components/SuccessModal/SuccessModal";
 
 export default function Register() {
   const [email, setEmail] = useState("");
@@ -21,52 +16,22 @@ export default function Register() {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [country, setCountry] = useState("");
-  const [authCode, setAuthCode] = useState("");
-  const [birthday, setBirthday] = useState(new Date());
-  const [modalShow, setModalShow] = React.useState(false);
 
   function validateForm() {
-    return (
-      email.length > 0 &&
-      password.length > 0 &&
-      firstName.length > 0 &&
-      lastName.length > 0 &&
-      birthday
-    );
+    return email.length > 0 && password.length > 0;
   }
 
   function handleSubmit(event) {
     event.preventDefault();
-    fetch(
-      "https://mt7pf3aohi.execute-api.us-east-2.amazonaws.com/test/register-user",
-      {
-        method: "POST",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-          Email: email,
-          Role: "PUBLIC",
-          FirstName: firstName,
-          LastName: lastName,
-          Password: password
-        })
-      }
-    )
-      .then(response => {
-        if (response.status >= 200 && response.status < 300) {
-          return response.json();
-        } else {
-          throw new Error();
-        }
-      })
-      .then(json => {
-        setModalShow(true);
-      })
-      .catch(error => {
-        alert("Credentials exist in system, please try again.");
-      });
+    if (password === "admin") {
+      const cookies = new Cookies();
+      cookies.set("name", "David", { path: "/" });
+      cookies.set("token", "test_token_value", { path: "/" });
+      alert("Logged in");
+      window.location.reload();
+    } else {
+      alert("Invalid credentials");
+    }
   }
 
   return (
@@ -82,7 +47,6 @@ export default function Register() {
                   type="firstName"
                   value={firstName}
                   onChange={e => setFirstName(e.target.value)}
-                  placeholder="John"
                 />
               </FormGroup>
               <FormGroup as={Col} controlId="lastName">
@@ -91,7 +55,6 @@ export default function Register() {
                   value={lastName}
                   onChange={e => setLastName(e.target.value)}
                   type="lastName"
-                  placeholder="Applescab"
                 />
               </FormGroup>
             </Row>
@@ -101,7 +64,6 @@ export default function Register() {
                 type="email"
                 value={email}
                 onChange={e => setEmail(e.target.value)}
-                placeholder="john@orchardwatch.com"
               />
             </FormGroup>
             <FormGroup controlId="password">
@@ -112,66 +74,24 @@ export default function Register() {
                 type="password"
               />
             </FormGroup>
-            <Row>
-              <FormGroup as={Col} controlId="country">
-                <FormLabel>Country</FormLabel>
-
-                <Form.Control
-                  as="select"
-                  value={country}
-                  onChange={e => setCountry(e.target.value)}
-                  type="country"
-                >
-                  <option>United States</option>
-                  <option>Canada</option>
-                  <option>Mexico</option>
-                </Form.Control>
-              </FormGroup>
-            </Row>
-            <Row>
-              <Col>
-                <FormGroup controlId="birthday">
-                  <FormLabel>Birthday</FormLabel>
-                  <Row>
-                    <Col>
-                      <DatePicker
-                        selected={birthday}
-                        onChange={date => setBirthday(date)}
-                        peekNextMonth
-                        showMonthDropdown
-                        showYearDropdown
-                        dropdownMode="select"
-                      />
-                    </Col>
-                  </Row>
-                </FormGroup>
-              </Col>
-            </Row>
-
-            <FormGroup controlId="authCode">
-              <FormLabel>Auth Code (optional)</FormLabel>
-
+            <FormGroup as="select" controlId="country">
+              <FormLabel>Country</FormLabel>
               <FormControl
-                value={authCode}
-                onChange={e => setAuthCode(e.target.value)}
-                type="authCode"
-                placeholder="For researchers and growers"
+                value={country}
+                onChange={e => setCountry(e.target.value)}
+                type="country"
               />
+              <option>Choose...</option>
+              <option>America</option>
+              <option>United States</option>
+              <option>USA</option>
             </FormGroup>
-
             <Button block disabled={!validateForm()} type="submit">
               Create account
             </Button>
           </form>
         </div>
       </Col>
-      <SuccessModal
-        show={modalShow}
-        onHide={() => {
-          setModalShow(false);
-          window.location.reload();
-        }}
-      />
     </Row>
   );
 }
