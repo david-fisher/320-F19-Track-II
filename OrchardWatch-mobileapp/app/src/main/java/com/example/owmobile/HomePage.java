@@ -48,7 +48,7 @@ public class HomePage extends AppCompatActivity {
         authenticationKey = sp.getString("AuthKey", "EMPTY");
 
         Fragment homefrag = new HomeFragment();
-        Fragment uploadfrag = new PhotoUploadFragment();
+        Fragment uploadfrag = new PhotoUploadNew();
         Fragment settingsfrag = new SettingsFragment();
 
         fragmentSparseArray.append(R.id.nav_home, homefrag);

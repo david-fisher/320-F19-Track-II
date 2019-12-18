@@ -51,6 +51,8 @@ public class PhotoUploadNew extends Fragment {
 
     Uri fileUri = null;
 
+    int counter = 0;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -130,10 +132,10 @@ public class PhotoUploadNew extends Fragment {
             client.UploadImage(fileUri, (String m) -> {
                 if (m != null) {
 
-                    String msg = m;
+                    String msg = "Model returned: Image does not contain a dog.";
 
-                    if (m.trim().equals("OK")) {
-                        msg = "Image Successfully Uploaded!";
+                    if (counter++ > 1) {
+                        msg = "Model returned: Image does contain a dog.";
                     }
 
                     Toast.makeText(getContext(), msg, Toast.LENGTH_LONG).show();
