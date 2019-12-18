@@ -1,14 +1,15 @@
 import React from "react";
 import Cookies from "universal-cookie";
 import {Container, Card, Button, Col,Row} from "react-bootstrap";
+import "./Profile.css";
 
 export default function Profile() {
     const cookies = new Cookies();
     return (
-        <div >
+        <div className = "page">
             <Container className="Title">
                 <h1>Welcome {cookies.get('name')}</h1>
-                <hr/>
+                <hr className = "titleHR"/>
             </Container>
             <Container>
                 <Col>
@@ -35,7 +36,6 @@ export default function Profile() {
                             <hr/>
                             <Card.Text>About Me</Card.Text>
                             <p>Hi my name is kyle and i like to eat turds</p>
-                            
                         </Card.Body>
                     </Card>
                 </Col>
