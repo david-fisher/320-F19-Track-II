@@ -33,7 +33,15 @@ export default function App() {
           {token !== undefined && (
             <Nav.Link href="/observations">Observations</Nav.Link>
           )}
-          {token !== undefined && <Nav.Link href="/ask-ai">Ask AI</Nav.Link>}
+          {token !== undefined && (
+            <Dropdown as={NavItem}>
+              <Dropdown.Toggle as={Nav.Link}>Ask AI</Dropdown.Toggle>
+              <Dropdown.Menu alignRight={true}>
+                <Dropdown.Item href="/predict">Predict</Dropdown.Item>
+                <Dropdown.Item href="/annotate">Annotate</Dropdown.Item>
+              </Dropdown.Menu>
+            </Dropdown>
+          )}
         </Nav>
 
         <Nav className="justify-content-end">

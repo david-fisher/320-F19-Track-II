@@ -11,7 +11,8 @@ import AI from "../../pages/AI/AI";
 import Data from "../../pages/Data/Data";
 import Orchards from "../../pages/Orchards/Orchards";
 import Register from "../../pages/Register/Register";
-
+import Predict from "../../pages/Predict/Predict";
+import Annotate from "../../pages/Annotate/Annotate";
 import NotFound from "../../pages/NotFound/NotFound";
 import UnauthenticatedRoute from "./UnauthenticatedRoute";
 import AuthenticatedRoute from "./AuthenticatedRoute";
@@ -31,6 +32,8 @@ export default function Routes() {
       <Route path="/data" exact component={Data} />
       <Route path="/orchards" exact component={Orchards} />
       <Route path="/register" exact component={Register} />
+      <AuthenticatedRoute path="/annotate" exact component={Annotate} />
+      <AuthenticatedRoute path="/predict" exact component={Predict} />
       <Route component={NotFound} />
     </Switch>
   );
