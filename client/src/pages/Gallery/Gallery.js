@@ -1,7 +1,7 @@
 import React from "react";
-import Gallery from 'react-grid-gallery';
+import Gallery from "react-grid-gallery";
 import "./Gallery.css";
-import {Container, Button} from "react-bootstrap";
+import { Container, Button } from "react-bootstrap";
 
 /*let imgs = getImageList();
 [
@@ -182,7 +182,6 @@ export default function Galler() {
       </Container>
     </div>
     */
-    <div>
-    </div>
+    <div></div>
   );
 }
